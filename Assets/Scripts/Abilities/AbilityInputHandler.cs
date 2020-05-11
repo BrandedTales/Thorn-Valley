@@ -64,8 +64,8 @@ namespace BT.Abilities
         {
             if (defenseTimer > pam.defenseAbility.cooldown.value)
             {
+                StartCoroutine(CastAbility(pam.defenseAbility));
                 defenseTimer = 0;
-                pam.defenseAbility.Execute();
             }
             else
             {
@@ -77,13 +77,19 @@ namespace BT.Abilities
         {
             if (attackTimer > pam.attackAbility.cooldown.value)
             {
+                StartCoroutine(CastAbility(pam.attackAbility));
                 attackTimer = 0;
-                pam.attackAbility.Execute();
             }
             else
             {
                 Debug.Log("Cooldown: " + attackTimer + "/" + pam.attackAbility.cooldown.value);
             }
+        }
+
+        private IEnumerator CastAbility(Ability activeAbility)
+        {
+            yield return new WaitForSeconds(activeAbility.castTime.value);
+            activeAbility.Execute();
         }
     }
 }

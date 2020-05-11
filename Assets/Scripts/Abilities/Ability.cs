@@ -18,7 +18,7 @@ namespace BT.Abilities
         [SerializeField] AbilityType abilityType;
         [SerializeField] ElementType elementType;
         [Space(15)]
-        [SerializeField] FloatReference castTime;
+        public FloatReference castTime;
         public FloatReference cooldown;
         [SerializeField] FloatReference duration;
         [Space(15)]
@@ -45,15 +45,15 @@ namespace BT.Abilities
 
             }
 
-
-
         }
 
         private void SpawnAbility()
         {
+
             Projectile projectile = Instantiate(projectilePrefab, projectileSpawn.position, projectileSpawn.rotation);
-            projectile.InitializeProjectile(travelSpeed.value, duration.value, isPassThrough);
+            projectile.InitializeProjectile(travelSpeed.value, duration.value, damage.value, isPassThrough);
         }
+
         private void ActivateUtility()
         {
             if (bDebug) Debug.Log("Using a utility!.");

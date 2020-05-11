@@ -23,8 +23,8 @@ MonoBehaviour:
     constantValue: 0
     variable: {fileID: 11400000, guid: 7bbd08c83d4a09f4db487c226976f716, type: 2}
   cooldown:
-    useConstant: 0
-    constantValue: 0
+    useConstant: 1
+    constantValue: 0.7
     variable: {fileID: 11400000, guid: d4e7eddc39f913d41a5ac26ec897e042, type: 2}
   duration:
     useConstant: 0
