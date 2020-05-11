@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcc432ff0b61d648be9d8b943bb7f98, type: 3}
+  m_Name: Air-Attack
+  m_EditorClassIdentifier: 
+  abilityName:
+    useConstant: 1
+    constantValue: Lightning
+    variable: {fileID: 0}
+  abilityType: 0
+  elementType: 0
+  castTime:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 7bbd08c83d4a09f4db487c226976f716, type: 2}
+  cooldown:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: d4e7eddc39f913d41a5ac26ec897e042, type: 2}
+  duration:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 19c4b310ef789e148939fae11516b25c, type: 2}
+  projectileSpawn: {fileID: 0}
+  projectilePrefab: {fileID: 2396535699893412944, guid: a0130ce903bbd724a90e5e5aeba45441,
+    type: 3}
+  damage:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 1df312f958bbef84885b31914623290b, type: 2}
+  travelSpeed:
+    useConstant: 1
+    constantValue: 14
+    variable: {fileID: 0}
+  isPassThrough: 1
+  bDebug: 1
