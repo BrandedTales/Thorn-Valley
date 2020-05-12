@@ -12,53 +12,68 @@ namespace BT.Abilities
     {
         public enum AbilityType { Attack, Defense, Utility, Passive }
         public enum ElementType { Air, Water, Fire, Earth, Life }
+        public enum OutputType { SpawnObject, ActivateLocation, State}
 
         [Header("General Traits")]
         [SerializeField] StringReference abilityName;
         [SerializeField] AbilityType abilityType;
         [SerializeField] ElementType elementType;
-        [Space(15)]
+        [SerializeField] OutputType outputType;
+
+        [Header("Casting Details")]
         public FloatReference castTime;
         public FloatReference cooldown;
-        [SerializeField] FloatReference duration;
-        [Space(15)]
-        [HideInInspector] public Transform projectileSpawn;
-        [SerializeField] Projectile projectilePrefab;
 
-        [Header("Attack")]
-        [SerializeField] FloatReference damage;
-        [SerializeField] FloatReference travelSpeed;
-        public FloatReference explodeRadius;
-        [SerializeField] bool isPassThrough;
-        [SerializeField] GameObject objectToSpawnOnImpact;
+        [Header("Spawn Details")]
+        [SerializeField] AbilitySpawn projectilePrefab;
+        [SerializeField] FloatReference offset;
+        [SerializeField] bool isConnectedToPlayer;
+        public FloatReference duration;
+        public FloatReference speed;
+        
+        [Header("Combat Implications")]
+        public FloatReference damage;
+        public FloatReference triggerInterval;
+
+        [Header("Impact Effects")]
+        public GameObject objectToSpawnOnImpact;
+        public FloatReference explosionRadius;
+        public bool isPassThroughEnemies;
+        public bool isNeverImpact;
         //[SerializeField] AIBehavior aIBehavior;  //Haven't implemented AI behaviors yet.
-
+        [Space(15)]
 
         [Header("Debugging")]
         [SerializeField] bool bDebug = true;
 
         public void Execute()
         {
-            switch (abilityType)
+            switch (outputType)
             {
-                case AbilityType.Attack:
-                case AbilityType.Defense: SpawnAbility();
+                case OutputType.SpawnObject: SpawnAbility();
                     break;
-                case AbilityType.Utility: ActivateUtility();
+                case OutputType.ActivateLocation: ActivateLocation();
                     break;
 
             }
 
         }
 
+
         private void SpawnAbility()
         {
+            GameObject player = GameObject.FindWithTag("Player");
 
-            Projectile projectile = Instantiate(projectilePrefab, projectileSpawn.position, projectileSpawn.rotation);
-            projectile.InitializeProjectile(travelSpeed.value, duration.value, damage.value, explodeRadius.value, isPassThrough, objectToSpawnOnImpact);
+            if (player == null) return;
+
+            Vector3 offsetVector = (player.transform.forward * offset) + new Vector3(0,1f,0);
+            AbilitySpawn abilitySpawn = Instantiate(projectilePrefab, player.transform.position+offsetVector, player.transform.rotation);
+            abilitySpawn.Initialize(this);
+            if (isConnectedToPlayer)
+                abilitySpawn.transform.parent = player.transform;
         }
 
-        private void ActivateUtility()
+        private void ActivateLocation()
         {
             if (bDebug) Debug.Log("Using a utility!.");
         }

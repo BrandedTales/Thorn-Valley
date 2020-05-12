@@ -3,48 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using BT.Variables;
 using BT.Core;
+using System;
 
 namespace BT.Abilities
 {
-    public class Projectile : MonoBehaviour
+    public class AbilitySpawn : MonoBehaviour
     {
 
-        float speed;
-        float lifeSpan;
-        float damage;
-        float explosionRadius;
-        bool isPassthrough =false;
-        GameObject objectToSpawnOnImpact = null;
+        Ability sourceAbility;
 
         [SerializeField] bool bDebug = true;
 
         // Update is called once per frame
         void Update()
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            if (sourceAbility == null) return;
+
+            if (sourceAbility.speed > 0) Move();
+
+
         }
 
 
-        public void InitializeProjectile(float speed, float lifeSpan, float damage, float explosionRadius, bool isPassthrough, GameObject objectToSpawnOnImpact)
+        private void Move()
         {
-            this.speed = speed;
-            this.lifeSpan = lifeSpan;
-            this.damage = damage;
-            this.explosionRadius = explosionRadius;
-            this.isPassthrough = isPassthrough;
+            transform.Translate(Vector3.forward * sourceAbility.speed * Time.deltaTime);
+        }
 
-            if (objectToSpawnOnImpact != null)
-                this.objectToSpawnOnImpact = objectToSpawnOnImpact;
-
+        public void Initialize(Ability ability)
+        {
+            sourceAbility = ability;
 
             StartCoroutine(DestroyMe());
         }
 
         IEnumerator DestroyMe()
         {
-            yield return new WaitForSeconds(lifeSpan);
+            yield return new WaitForSeconds(sourceAbility.duration);
+
             //Blow it up if it's supposed to.
-            if (explosionRadius > 0)
+            if (sourceAbility.explosionRadius > 0)
             {
                 Explode(null);
             }
@@ -53,8 +51,9 @@ namespace BT.Abilities
 
         public void Impact()
         {
+            if (sourceAbility.isNeverImpact) return;
             //TODO: Add some VFX to represent the hit.
-
+            
             Destroy(gameObject);
         }
 
@@ -62,9 +61,9 @@ namespace BT.Abilities
         {
             if (other.tag == "Player") return;
 
-            if ((isPassthrough)&&(other.tag=="Enemy"))
+            if ((sourceAbility.isPassThroughEnemies)&&(other.tag=="Enemy"))
             {
-                other.GetComponent<Health>().TakeDamage(damage);
+                other.GetComponent<Health>().TakeDamage(sourceAbility.damage);
                 //Potential bug here:  If it passes through, enemy takes damage, and then detonates next to enemy, he takes damage twice.
                 //It's a moot point right now (since no abilities should have this problem), but something to be aware of.
             }
@@ -74,11 +73,11 @@ namespace BT.Abilities
                 //I really feel like there's a better way to refactor all this as I have duplicative if statements and duplicative code.
                 if (other.tag == "Enemy")
                 {
-                    other.GetComponent<Health>().TakeDamage(damage);
-                    if (objectToSpawnOnImpact != null)
-                        Instantiate(objectToSpawnOnImpact, other.transform.position, Quaternion.identity);
+                    other.GetComponent<Health>().TakeDamage(sourceAbility.damage);
+                    if (sourceAbility.objectToSpawnOnImpact != null)
+                        Instantiate(sourceAbility.objectToSpawnOnImpact, other.transform.position, Quaternion.identity);
                 }
-                if (explosionRadius>0)
+                if (sourceAbility.explosionRadius>0)
                 {
                     Explode(other);
                 }
@@ -93,8 +92,8 @@ namespace BT.Abilities
 
             //TODO: Spawn some VFX here.
 
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
-            if (bDebug) Debug.Log("Blowing up on: " + hitColliders.Length + "  Radius = " + explosionRadius + " dmg: " + damage);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, sourceAbility.explosionRadius);
+            if (bDebug) Debug.Log("Blowing up on: " + hitColliders.Length + "  Radius = " + sourceAbility.explosionRadius + " dmg: " + sourceAbility.damage);
 
             foreach (Collider collider in hitColliders)
             {
@@ -105,18 +104,12 @@ namespace BT.Abilities
                 //Checking the "other" parameter so we don't do double-damage.
                 if (collider.tag == "Enemy")
                 {
-                    collider.GetComponent<Health>().TakeDamage(damage);
-                    if (objectToSpawnOnImpact != null)
-                        Instantiate(objectToSpawnOnImpact, collider.transform.position, Quaternion.identity);
+                    collider.GetComponent<Health>().TakeDamage(sourceAbility.damage);
+                    if (sourceAbility.objectToSpawnOnImpact != null)
+                        Instantiate(sourceAbility.objectToSpawnOnImpact, collider.transform.position, Quaternion.identity);
                 }
             }
 
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, explosionRadius);
         }
 
     }

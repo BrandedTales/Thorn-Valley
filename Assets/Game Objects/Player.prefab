@@ -967,7 +967,6 @@ GameObject:
   - component: {fileID: 2068161274362364792}
   - component: {fileID: 2068161274362364799}
   - component: {fileID: 2068161274362364798}
-  - component: {fileID: 1490074779}
   - component: {fileID: 1490074785}
   - component: {fileID: 1490074780}
   m_Layer: 0
@@ -1144,18 +1143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5474eccad914a1386493683f58a1e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1490074779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2068161274362364797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab779f6536075c746a6a710e8d3c8f7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1490074785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1168,11 +1155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7060859cf34e514d9e6d17c0d12aa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpawn: {fileID: 3091783908513417283}
-  attackAbility: {fileID: 11400000, guid: ed7c8573783dfd34aaa08b39443db6f8, type: 2}
-  defenseAbility: {fileID: 11400000, guid: ae0f2961152506844b5fb98c3e74551f, type: 2}
-  utilityAbility: {fileID: 11400000, guid: d943e0aa312138e4384eb178dc526bbb, type: 2}
-  passiveAbility: {fileID: 11400000, guid: f82c5e3bc57a2444c90e4dda54bc00f6, type: 2}
+  attackAbility: {fileID: 11400000, guid: acd4a400eb86e5744b12f48a25002a0f, type: 2}
+  defenseAbility: {fileID: 11400000, guid: e13a02bd02566f24680086ed92526c49, type: 2}
+  utilityAbility: {fileID: 11400000, guid: 6e001020f67bef343a0f7dd31aa116b3, type: 2}
+  passiveAbility: {fileID: 0}
 --- !u!114 &1490074780
 MonoBehaviour:
   m_ObjectHideFlags: 0

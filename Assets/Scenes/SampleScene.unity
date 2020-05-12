@@ -506,6 +506,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1490074785, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
+      propertyPath: defenseAbility
+      value: 
+      objectReference: {fileID: 11400000, guid: 49963a10eb6bbfa40b1b6403697225bc,
+        type: 2}
     - target: {fileID: 2068161274362364794, guid: ddf45a12e29b25f4493ecdd7baf0c4da,
         type: 3}
       propertyPath: m_LocalPosition.x

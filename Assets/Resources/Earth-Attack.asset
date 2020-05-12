@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName:
     useConstant: 1
-    constantValue: Petrfiy
+    constantValue: Petrify
     variable: {fileID: 0}
   abilityType: 0
   elementType: 3
+  outputType: 0
   castTime:
     useConstant: 0
     constantValue: 0
@@ -26,26 +27,33 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: d4e7eddc39f913d41a5ac26ec897e042, type: 2}
+  projectilePrefab: {fileID: 317582735942167099, guid: 49079a116a945f54cb48c35e3dceb9c0,
+    type: 3}
+  offset:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 082da92be18eb0641bc740ae94d101a0, type: 2}
   duration:
     useConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: 19c4b310ef789e148939fae11516b25c, type: 2}
-  projectileSpawn: {fileID: 0}
-  projectilePrefab: {fileID: 6101140354683458569, guid: 49079a116a945f54cb48c35e3dceb9c0,
-    type: 3}
-  damage:
-    useConstant: 1
-    constantValue: 10
-    variable: {fileID: 0}
-  travelSpeed:
+  speed:
     useConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: 5ac088b968c1114439a7cc24ac6aeaed, type: 2}
-  explodeRadius:
+  damage:
+    useConstant: 1
+    constantValue: 10
+    variable: {fileID: 11400000, guid: 1df312f958bbef84885b31914623290b, type: 2}
+  triggerInterval:
     useConstant: 1
     constantValue: 0
     variable: {fileID: 0}
-  isPassThrough: 0
   objectToSpawnOnImpact: {fileID: 1427772338814734748, guid: d7367920e09859045b68edfc37ad76e4,
     type: 3}
+  explosionRadius:
+    useConstant: 1
+    constantValue: 0
+    variable: {fileID: 0}
+  isDestroyedOnImpact: 0
   bDebug: 1

@@ -18,6 +18,7 @@ MonoBehaviour:
     variable: {fileID: 0}
   abilityType: 0
   elementType: 1
+  outputType: 0
   castTime:
     useConstant: 0
     constantValue: 0
@@ -26,25 +27,32 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: d4e7eddc39f913d41a5ac26ec897e042, type: 2}
+  projectilePrefab: {fileID: 2441147366682840972, guid: 432ae57257be1934dae49f1551a14420,
+    type: 3}
+  offset:
+    useConstant: 1
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 082da92be18eb0641bc740ae94d101a0, type: 2}
   duration:
     useConstant: 1
-    constantValue: 0.01
-    variable: {fileID: 0}
-  projectileSpawn: {fileID: 0}
-  projectilePrefab: {fileID: 8152482465145336254, guid: 432ae57257be1934dae49f1551a14420,
-    type: 3}
-  damage:
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 19c4b310ef789e148939fae11516b25c, type: 2}
+  speed:
     useConstant: 1
-    constantValue: 2
-    variable: {fileID: 0}
-  travelSpeed:
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 5ac088b968c1114439a7cc24ac6aeaed, type: 2}
+  damage:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 1df312f958bbef84885b31914623290b, type: 2}
+  triggerInterval:
     useConstant: 1
     constantValue: 0
     variable: {fileID: 0}
-  explodeRadius:
+  objectToSpawnOnImpact: {fileID: 0}
+  explosionRadius:
     useConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: 41997100e311d88459c490776603fe5b, type: 2}
-  isPassThrough: 0
-  objectToSpawnOnImpact: {fileID: 0}
+  isDestroyedOnImpact: 0
   bDebug: 1
