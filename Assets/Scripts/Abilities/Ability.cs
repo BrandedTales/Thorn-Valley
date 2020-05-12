@@ -28,7 +28,11 @@ namespace BT.Abilities
         [Header("Attack")]
         [SerializeField] FloatReference damage;
         [SerializeField] FloatReference travelSpeed;
+        public FloatReference explodeRadius;
         [SerializeField] bool isPassThrough;
+        [SerializeField] GameObject objectToSpawnOnImpact;
+        //[SerializeField] AIBehavior aIBehavior;  //Haven't implemented AI behaviors yet.
+
 
         [Header("Debugging")]
         [SerializeField] bool bDebug = true;
@@ -51,7 +55,7 @@ namespace BT.Abilities
         {
 
             Projectile projectile = Instantiate(projectilePrefab, projectileSpawn.position, projectileSpawn.rotation);
-            projectile.InitializeProjectile(travelSpeed.value, duration.value, damage.value, isPassThrough);
+            projectile.InitializeProjectile(travelSpeed.value, duration.value, damage.value, explodeRadius.value, isPassThrough, objectToSpawnOnImpact);
         }
 
         private void ActivateUtility()

@@ -1169,8 +1169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpawn: {fileID: 3091783908513417283}
-  attackAbility: {fileID: 11400000, guid: 229fccc0486cced43a4dbba2c435c869, type: 2}
-  defenseAbility: {fileID: 11400000, guid: 18b8bb0c3ffaf5245a345939e795d15f, type: 2}
+  attackAbility: {fileID: 11400000, guid: ed7c8573783dfd34aaa08b39443db6f8, type: 2}
+  defenseAbility: {fileID: 11400000, guid: ae0f2961152506844b5fb98c3e74551f, type: 2}
   utilityAbility: {fileID: 11400000, guid: d943e0aa312138e4384eb178dc526bbb, type: 2}
   passiveAbility: {fileID: 11400000, guid: f82c5e3bc57a2444c90e4dda54bc00f6, type: 2}
 --- !u!114 &1490074780

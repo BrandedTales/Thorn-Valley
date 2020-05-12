@@ -635,16 +635,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 5483662872115874648, guid: d6beba84405132f459f3b5c08fcd054e,
-        type: 3}
-      propertyPath: maxHealth.useConstant
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5483662872115874648, guid: d6beba84405132f459f3b5c08fcd054e,
-        type: 3}
-      propertyPath: maxHealth.variable
-      value: 
-      objectReference: {fileID: 11400000, guid: b4c1612e5054bbe4c9f657ce6acdaf65,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6beba84405132f459f3b5c08fcd054e, type: 3}

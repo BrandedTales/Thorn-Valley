@@ -26,6 +26,12 @@ namespace BT.Abilities
             if (defenseAbility != null) defenseAbility.projectileSpawn = projectileSpawn;
         }
 
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, attackAbility.explodeRadius.value);
+        }
+
         //Need to validate types are appropriate when using abilities/setting the ability?  I dunno.
 
     }
