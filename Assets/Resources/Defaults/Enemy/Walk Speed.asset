@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fd88e18bfbe04f3aa7a8e49ab062838, type: 3}
-  m_Name: DatabaseVariables
+  m_Script: {fileID: 11500000, guid: bb269da22929bc9408f905ec7789ec1b, type: 3}
+  m_Name: Walk Speed
   m_EditorClassIdentifier: 
-  tags: {fileID: 11400000, guid: cabcbbb68d36d8143846137718dfbc41, type: 2}
-  variables: {fileID: 11400000, guid: 6db1eb976d6174740bad726a9f17a738, type: 2}
+  Description: Default walk speed for enemies.
+  value: 3.5
