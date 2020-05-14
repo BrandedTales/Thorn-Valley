@@ -10,6 +10,8 @@ namespace BT.Core
         [SerializeField] FloatReference maxHealth;
         [SerializeField] float currentHealth;
 
+        bool isDead = false;
+
         private void Start() {
             currentHealth = maxHealth;
         }
@@ -31,7 +33,13 @@ namespace BT.Core
 
         private void Die()
         {
+            GetComponent<ActionScheduler>().CancelCurrentAction();
             Destroy(gameObject);
+        }
+
+        public bool IsDead()
+        {
+            return isDead;
         }
     }
 }
