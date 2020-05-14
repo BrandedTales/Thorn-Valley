@@ -699,72 +699,8 @@ PrefabInstance:
       objectReference: {fileID: 984958941}
     - target: {fileID: 8433606156709489537, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
         type: 3}
-      propertyPath: waitDuringPatrols.useConstant
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8433606156709489537, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
-        type: 3}
-      propertyPath: waitDuringPatrols.variable
-      value: 
-      objectReference: {fileID: 11400000, guid: e7386a603ffc56e419df8255ef02f781,
-        type: 2}
-    - target: {fileID: 8433606156709489537, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
-        type: 3}
-      propertyPath: bDebug
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8433606156709489537, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
-        type: 3}
-      propertyPath: chaseRange.useConstant
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8433606156709489537, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
-        type: 3}
-      propertyPath: chaseRange.variable
-      value: 
-      objectReference: {fileID: 11400000, guid: 3cb2eb5f72a1fcc49a6b6e285f6bde40,
-        type: 2}
-    - target: {fileID: 8433606156709489537, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
-        type: 3}
-      propertyPath: walkSpeed.useConstant
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8433606156709489537, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
-        type: 3}
-      propertyPath: walkSpeed.variable
-      value: 
-      objectReference: {fileID: 11400000, guid: 3b0f6e6a78511594cb549f6582b470e9,
-        type: 2}
-    - target: {fileID: 8433606156709489537, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
-        type: 3}
-      propertyPath: runSpeed.useConstant
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8433606156709489537, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
-        type: 3}
-      propertyPath: runSpeed.variable
-      value: 
-      objectReference: {fileID: 11400000, guid: 4a9fd4b498ff1764b94155f04abaa5b6,
-        type: 2}
-    - target: {fileID: 8433606156709489542, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
-        type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8433606156709489542, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
-        type: 3}
-      propertyPath: m_AngularSpeed
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 8433606156709489542, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
-        type: 3}
-      propertyPath: m_Acceleration
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 8433606156709489543, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+      propertyPath: runRange.constantValue
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8433606156709489594, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
         type: 3}
@@ -819,6 +755,11 @@ PrefabInstance:
     - target: {fileID: 8433606156709489594, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433606157477305116, guid: 5a53ddf61af02e3499e0cdfc002fd9aa,
+        type: 3}
+      propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

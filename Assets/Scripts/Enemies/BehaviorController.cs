@@ -22,8 +22,14 @@ namespace BT.Enemies
         int wayPointIndex = 0;
         float patrolWaitTime;
 
-        [Header("Chase Behaviors")]
+        [Header("Aggression Behaviors")]
+        [Tooltip("Attack only if provoked")]
+        [SerializeField] bool isAttackingOnlyWhenProvoked;
+        [Tooltip("Use a whole number for percentage health")]
+        [SerializeField] FloatReference fleeThreshold;
+        [Tooltip("How close until we trigger the aggression behavior")]
         [SerializeField] FloatReference chaseRange;
+        [Tooltip("How fast does the enemy move when engaging aggression behavior")]
         [SerializeField] FloatReference runSpeed;
 
 
@@ -46,37 +52,52 @@ namespace BT.Enemies
 
         private void Update() 
         {
-            if  (ChaseBehavior()) return;
-            PatrolBehavior();
+            if (AggressionBehavior()) return;
+            MoveBehavior();
 
         }
 
-        #region Chase Behavior
-        private bool ChaseBehavior()
+
+        #region Aggression Behavior
+        private bool AggressionBehavior()
         {
+            if (isAttackingOnlyWhenProvoked&&(health.HealthPercentage() == 100)) return false;
+
+            //If enemy is close to the player, check his health.  If it's low, run.  If it's high, chase.
             GameObject player = GameObject.FindWithTag("Player");
-            if ((player!=null)&&(Vector3.Distance(transform.position, player.transform.position) < chaseRange.value))
+            if ((player != null) && (Vector3.Distance(transform.position, player.transform.position) < chaseRange.value))
             {
-                navMeshAgent.destination = player.transform.position;
-                navMeshAgent.speed = runSpeed;
+                if (health.HealthPercentage() < fleeThreshold.value)
+                {
+                    if (bDebug) Debug.Log("Health:" + health.HealthPercentage());
+
+                    Vector3 direction = Vector3.Normalize(player.transform.position - transform.position);
+                    navMeshAgent.destination = (direction * -1 * chaseRange.value);
+                    navMeshAgent.speed = runSpeed;
+
+                }
+                else
+                {
+                    navMeshAgent.destination = player.transform.position;
+                    navMeshAgent.speed = runSpeed;
+                }
                 return true;
             }
-            else 
+            else
             {
                 navMeshAgent.speed = walkSpeed;
                 navMeshAgent.destination = pathOfInterest[wayPointIndex].position;
                 return false;
             }
-
-
         }
 
         #endregion
 
-        #region Patrol Behavior
+        #region Move Behavior
 
-        private void PatrolBehavior()
+        private void MoveBehavior()
         {
+            
             navMeshAgent.speed = walkSpeed;
             float distanceToWP = Vector3.Distance(transform.position, pathOfInterest[wayPointIndex].position);
             if (bDebug) Debug.Log("Distance to WP: " + distanceToWP + " / " + distanceTolerance.value);

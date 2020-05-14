@@ -24,6 +24,11 @@ namespace BT.Core
             }
         }
 
+        public float HealthPercentage()
+        {
+            return 100 * (currentHealth / maxHealth.value);
+        }
+
         private void Die()
         {
             Destroy(gameObject);
