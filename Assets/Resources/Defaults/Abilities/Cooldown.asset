@@ -15,4 +15,4 @@ MonoBehaviour:
   Description: 'How long after a spell is cast before it
 
     can be cast again.'
-  value: 0.25
+  value: 1

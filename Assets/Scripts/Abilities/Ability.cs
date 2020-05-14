@@ -46,11 +46,11 @@ namespace BT.Abilities
         [Header("Debugging")]
         [SerializeField] bool bDebug = true;
 
-        public void Execute()
+        public void Execute(GameObject abilityOrigin)
         {
             switch (outputType)
             {
-                case OutputType.SpawnObject: SpawnAbility();
+                case OutputType.SpawnObject: SpawnAbility(abilityOrigin);
                     break;
                 case OutputType.ActivateLocation: ActivateLocation();
                     break;
@@ -60,22 +60,22 @@ namespace BT.Abilities
         }
 
 
-        private void SpawnAbility()
+        private void SpawnAbility(GameObject shooterOrigin)
         {
-            GameObject player = GameObject.FindWithTag("Player");
+            if (bDebug) Debug.Log("Shot fired from" + shooterOrigin.tag);
 
-            if (player == null) return;
+            if (shooterOrigin == null) return;
 
-            Vector3 offsetVector = (player.transform.forward * offset) + new Vector3(0,1f,0);
-            AbilitySpawn abilitySpawn = Instantiate(projectilePrefab, player.transform.position+offsetVector, player.transform.rotation);
-            abilitySpawn.Initialize(this);
+            Vector3 offsetVector = (shooterOrigin.transform.forward * offset) + new Vector3(0,1f,0);
+            AbilitySpawn abilitySpawn = Instantiate(projectilePrefab, shooterOrigin.transform.position+offsetVector, shooterOrigin.transform.rotation);
+            abilitySpawn.Initialize(this, shooterOrigin.tag);
             if (isConnectedToPlayer)
-                abilitySpawn.transform.parent = player.transform;
+                abilitySpawn.transform.parent = shooterOrigin.transform;
         }
 
         private void ActivateLocation()
         {
-            if (bDebug) Debug.Log("Using a utility!.");
+            if (bDebug) Debug.Log("Using a utility!");
         }
     }
 }

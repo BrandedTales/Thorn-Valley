@@ -14,6 +14,9 @@ namespace BT.Enemies
         [SerializeField] FloatReference dwellTime;
 
         [SerializeField] FloatReference patrolSpeedFraction;
+        [SerializeField] FloatReference fleeThreshold;
+
+        [SerializeField] bool isAutoshooter;
 
         Fighter fighter;
         Health health;
@@ -23,6 +26,7 @@ namespace BT.Enemies
         Vector3 guardPosition;
         float timeSinceLastSeenPlayer = Mathf.Infinity;
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
+        float timeSinceLastShot = 0;
 
         int currentWaypointIndex = 0;
 
@@ -42,6 +46,11 @@ namespace BT.Enemies
 
             if (health.IsDead()) return;
 
+            if (health.HealthPercentage() < fleeThreshold)
+            {
+                Debug.Log("Flee Behavior" + health.HealthPercentage());
+                FleeBehavior();
+            }
             if (InAttackRangeOfPlayer() && fighter.CanAttack(player))
             {
                 timeSinceLastSeenPlayer = 0;
@@ -59,10 +68,18 @@ namespace BT.Enemies
             UpdateTimers();
         }
 
+        private void FleeBehavior()
+        {
+            Vector3 direction = Vector3.Normalize(transform.position - player.transform.position);
+            Debug.Log(direction);
+            mover.StartMoveAction(direction + transform.position, 1);
+        }
+
         private void UpdateTimers()
         {
             timeSinceLastSeenPlayer += Time.deltaTime;
             timeSinceArrivedAtWaypoint += Time.deltaTime;
+            timeSinceLastShot += Time.deltaTime;
         }
 
         private void PatrolBehavior()
@@ -82,6 +99,11 @@ namespace BT.Enemies
             if (timeSinceArrivedAtWaypoint > dwellTime)
             {
                 mover.StartMoveAction(nextPosition, patrolSpeedFraction);
+            }
+            if (isAutoshooter&&(timeSinceLastShot > fighter.attackAbility.cooldown.value))
+            {
+                AttackBehavior();
+                timeSinceLastShot = 0;
             }
 
         }

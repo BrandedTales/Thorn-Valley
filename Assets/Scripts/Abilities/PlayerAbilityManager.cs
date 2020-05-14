@@ -52,7 +52,7 @@ namespace BT.Abilities
             if (utilityTimer > utilityAbility.cooldown.value)
             {
                 utilityTimer = 0;
-                utilityAbility.Execute();
+                utilityAbility.Execute(this.gameObject);
             }
             else
             {
@@ -89,7 +89,7 @@ namespace BT.Abilities
         private IEnumerator CastAbility(Ability activeAbility)
         {
             yield return new WaitForSeconds(activeAbility.castTime.value);
-            activeAbility.Execute();
+            activeAbility.Execute(this.gameObject);
         }
 
         //Need to validate types are appropriate when using abilities/setting the ability?  I dunno.

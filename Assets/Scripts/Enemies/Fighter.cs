@@ -1,13 +1,15 @@
 using UnityEngine;
 using BT.Core;
 using BT.Variables;
+using BT.Abilities;
 
 namespace BT.Enemies
 {
     public class Fighter : MonoBehaviour, IEnemyAction
     {
-        [SerializeField] FloatReference timeBetweenAttacks;
+
         [SerializeField] FloatReference attackRange;
+        public Ability attackAbility;
 
         Health target;
 
@@ -41,9 +43,9 @@ namespace BT.Enemies
 
         private void AttackBehavior()
         {
-            transform.LookAt(target.transform);
-            if (timeSinceLastAttack >= timeBetweenAttacks)
+            if (timeSinceLastAttack >= attackAbility.cooldown.value)
             {
+                transform.LookAt(target.transform);
                 TriggerAttack();
                 timeSinceLastAttack = 0;
                 //This will trigger the "Hit" event from the animation.
@@ -56,8 +58,11 @@ namespace BT.Enemies
             return target;
         }
 
-        private void TriggerAttack()
+        public void TriggerAttack()
         {
+            attackAbility.Execute(this.gameObject);
+
+            //Once the animator is set up and working, in theory the actually triggering of damage would take place in the "Hit" phase.
             //GetComponent<Animator>().ResetTrigger("stopAttack");
             //GetComponent<Animator>().SetTrigger("attack");
         }

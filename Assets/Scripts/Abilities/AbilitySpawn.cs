@@ -11,6 +11,8 @@ namespace BT.Abilities
     {
 
         Ability sourceAbility;
+        string myTag;
+        string targetTag;
 
         [SerializeField] bool bDebug = true;
 
@@ -24,15 +26,20 @@ namespace BT.Abilities
 
         }
 
+        private void Start() 
+        {
+            targetTag = (myTag == "Enemy" ? "Player" : "Enemy");
+        }
 
         private void Move()
         {
             transform.Translate(Vector3.forward * sourceAbility.speed * Time.deltaTime);
         }
 
-        public void Initialize(Ability ability)
+        public void Initialize(Ability ability, string shooterTag)
         {
             sourceAbility = ability;
+            myTag = shooterTag;
 
             StartCoroutine(DestroyMe());
         }
@@ -59,9 +66,11 @@ namespace BT.Abilities
 
         private void OnTriggerEnter(Collider other) 
         {
-            if (other.tag == "Player") return;
 
-            if ((sourceAbility.isPassThroughEnemies)&&(other.tag=="Enemy"))
+            if (bDebug) Debug.Log("My tag: " + myTag + " and the hit tag: " + other.tag + " of " + other.gameObject.name);
+            if (myTag == other.tag) return;
+
+            if ((sourceAbility.isPassThroughEnemies)&&(other.tag==targetTag))
             {
                 other.GetComponent<Health>().TakeDamage(sourceAbility.damage);
                 //Potential bug here:  If it passes through, enemy takes damage, and then detonates next to enemy, he takes damage twice.
@@ -71,7 +80,7 @@ namespace BT.Abilities
             {
 
                 //I really feel like there's a better way to refactor all this as I have duplicative if statements and duplicative code.
-                if (other.tag == "Enemy")
+                if (other.tag == targetTag)
                 {
                     other.GetComponent<Health>().TakeDamage(sourceAbility.damage);
                     if (sourceAbility.objectToSpawnOnImpact != null)
@@ -102,7 +111,7 @@ namespace BT.Abilities
                 if (collider == other) continue;
 
                 //Checking the "other" parameter so we don't do double-damage.
-                if (collider.tag == "Enemy")
+                if (collider.tag == targetTag)
                 {
                     collider.GetComponent<Health>().TakeDamage(sourceAbility.damage);
                     if (sourceAbility.objectToSpawnOnImpact != null)

@@ -629,6 +629,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1490074780, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
+      propertyPath: maxHealth.useConstant
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490074780, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
+      propertyPath: maxHealth.constantValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1490074785, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
       propertyPath: defenseAbility
       value: 
@@ -841,14 +849,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef79409e139dbb4a83ddf59f1ebdf28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenAttacks:
-    useConstant: 0
-    constantValue: 0
-    variable: {fileID: 11400000, guid: d4e7eddc39f913d41a5ac26ec897e042, type: 2}
   attackRange:
     useConstant: 1
-    constantValue: 0.5
+    constantValue: 10000
     variable: {fileID: 0}
+  attackAbility: {fileID: 11400000, guid: b0266097023cf8e46bb1aefd0353ed96, type: 2}
 --- !u!114 &8433606157477305118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,6 +887,11 @@ MonoBehaviour:
     useConstant: 1
     constantValue: 0.4
     variable: {fileID: 0}
+  fleeThreshold:
+    useConstant: 1
+    constantValue: 50
+    variable: {fileID: 0}
+  isAutoshooter: 0
 --- !u!114 &8433606157477305119
 MonoBehaviour:
   m_ObjectHideFlags: 0

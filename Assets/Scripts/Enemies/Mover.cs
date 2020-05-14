@@ -12,7 +12,6 @@ namespace BT.Enemies
     public class Mover : MonoBehaviour, IEnemyAction
     {
 
-        Ray lastRay;
         NavMeshAgent navMeshAgent;
         Health health;
 
@@ -44,8 +43,7 @@ namespace BT.Enemies
             Vector3 velocity = GetComponent<NavMeshAgent>().velocity;
             Vector3 localVelocity = transform.InverseTransformDirection(velocity);
 
-            float speed = localVelocity.z;
-
+            //float speed = localVelocity.z;
             //GetComponent<Animator>().SetFloat("forwardSpeed", speed);
         }
 
