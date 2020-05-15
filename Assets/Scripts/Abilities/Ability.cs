@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using BT.Variables;
+using BT.Core;
 using UnityEngine;
 
 namespace BT.Abilities
@@ -19,6 +20,10 @@ namespace BT.Abilities
         [SerializeField] AbilityType abilityType;
         [SerializeField] ElementType elementType;
         [SerializeField] OutputType outputType;
+
+        [Header("Passive State Options")]
+        public PlayerPassive passiveState;
+        public FloatReference stateDuration;
 
         [Header("Casting Details")]
         public FloatReference castTime;
@@ -40,8 +45,6 @@ namespace BT.Abilities
         public FloatReference explosionRadius;
         public bool isPassThroughEnemies;
         public bool isNeverImpact;
-        //[SerializeField] AIBehavior aIBehavior;  //Haven't implemented AI behaviors yet.
-        [Space(15)]
 
         [Header("Debugging")]
         [SerializeField] bool bDebug = true;
@@ -54,11 +57,19 @@ namespace BT.Abilities
                     break;
                 case OutputType.ActivateLocation: ActivateLocation();
                     break;
-
             }
 
         }
 
+        public void EngageState()
+        {
+            States playerStates = GameObject.FindWithTag("Player").GetComponent<States>();
+            if (playerStates != null)
+            {
+                playerStates.ClearStates();
+                playerStates.SetState((int)passiveState, true);
+            }
+        }
 
         private void SpawnAbility(GameObject shooterOrigin)
         {

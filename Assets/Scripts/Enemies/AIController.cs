@@ -7,21 +7,32 @@ namespace BT.Enemies
 {
     public class AIController : MonoBehaviour
     {
+
+        #region Editor Fields
+        [Header("Aggression")]
         [SerializeField] FloatReference chaseDistance;
         [SerializeField] FloatReference suspicionTime;
-        [SerializeField] PatrolPath patrolPath;
+        [SerializeField] FloatReference fleeThreshold;
+        [SerializeField] bool isAutoshooter;
+
+        [Header("Movement")]
         [SerializeField] FloatReference waypointTolerance;
         [SerializeField] FloatReference dwellTime;
-
         [SerializeField] FloatReference patrolSpeedFraction;
-        [SerializeField] FloatReference fleeThreshold;
+        [Space(15)]
+        [SerializeField] PatrolPath patrolPath;
+        [Space(15)]
 
-        [SerializeField] bool isAutoshooter;
+        [SerializeField] bool hasRandomMovement;
+        [Range(0,2)][SerializeField] float minWanderDistance;
+        [Range(2,4)][SerializeField] float maxWanderDistance;
+        #endregion 
 
         Fighter fighter;
         Health health;
         GameObject player;
         Mover mover;
+        Vector3 nextWaypoint;
 
         Vector3 guardPosition;
         float timeSinceLastSeenPlayer = Mathf.Infinity;
@@ -39,6 +50,8 @@ namespace BT.Enemies
             mover = GetComponent<Mover>();
 
             guardPosition = transform.position;
+            nextWaypoint = guardPosition;
+
         }
 
         private void Update()
@@ -62,7 +75,7 @@ namespace BT.Enemies
             }
             else
             {
-                PatrolBehavior();
+                MoveBehavior();
             }
 
             UpdateTimers();
@@ -82,12 +95,12 @@ namespace BT.Enemies
             timeSinceLastShot += Time.deltaTime;
         }
 
-        private void PatrolBehavior()
+        private void MoveBehavior()
         {
 
             Vector3 nextPosition = guardPosition;
 
-            if (patrolPath != null)
+            if ((patrolPath != null)||(hasRandomMovement))
             {
                 if (AtWaypoint())
                 {
@@ -110,12 +123,24 @@ namespace BT.Enemies
 
         private Vector3 GetCurrentWaypoint()
         {
-            return patrolPath.GetWaypoint(currentWaypointIndex);
+            if (hasRandomMovement)
+                return nextWaypoint;
+            else
+                return patrolPath.GetWaypoint(currentWaypointIndex);
         }
 
         private void CycleWaypoint()
         {
-            currentWaypointIndex = patrolPath.GetNextIndex(currentWaypointIndex);
+            if (hasRandomMovement)
+            {
+                float newX = UnityEngine.Random.Range(minWanderDistance, maxWanderDistance) * ((int)UnityEngine.Random.Range(0, 2) * 2 - 1);
+                float newZ = UnityEngine.Random.Range(minWanderDistance, maxWanderDistance) * ((int)UnityEngine.Random.Range(0, 2) * 2 - 1);
+                Vector3 newLocation = new Vector3(newX, 0, newZ);
+                Debug.Log("Wander to: " + newLocation);
+                nextWaypoint = transform.position + newLocation;
+            }
+            else
+                currentWaypointIndex = patrolPath.GetNextIndex(currentWaypointIndex);
         }
 
         private bool AtWaypoint()

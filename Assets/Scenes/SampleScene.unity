@@ -622,6 +622,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160f3d7492496e948b3530108a8cdc26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1705285176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705285174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e355ada0a0463408f696a71a4f24b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStates: 
 --- !u!1001 &2068161275090788916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -646,6 +659,11 @@ PrefabInstance:
       propertyPath: attackAbility
       value: 
       objectReference: {fileID: 11400000, guid: 229fccc0486cced43a4dbba2c435c869,
+        type: 2}
+    - target: {fileID: 1490074785, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
+      propertyPath: passiveAbility
+      value: 
+      objectReference: {fileID: 11400000, guid: 85ee977f61d16724a9572f14552db527,
         type: 2}
     - target: {fileID: 2068161274362364793, guid: ddf45a12e29b25f4493ecdd7baf0c4da,
         type: 3}
@@ -874,7 +892,11 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: e7386a603ffc56e419df8255ef02f781, type: 2}
-  patrolPath: {fileID: 1405543435}
+  fleeThreshold:
+    useConstant: 1
+    constantValue: 50
+    variable: {fileID: 0}
+  isAutoshooter: 0
   waypointTolerance:
     useConstant: 0
     constantValue: 0
@@ -887,11 +909,10 @@ MonoBehaviour:
     useConstant: 1
     constantValue: 0.4
     variable: {fileID: 0}
-  fleeThreshold:
-    useConstant: 1
-    constantValue: 50
-    variable: {fileID: 0}
-  isAutoshooter: 0
+  patrolPath: {fileID: 0}
+  hasRandomMovement: 1
+  minWanderDistance: 1.014
+  maxWanderDistance: 2
 --- !u!114 &8433606157477305119
 MonoBehaviour:
   m_ObjectHideFlags: 0
