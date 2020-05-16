@@ -11,8 +11,8 @@ namespace BT.Abilities
     {
 
         Ability sourceAbility;
-        string myTag;
-        string targetTag;
+
+        GameObject sourceAttacker;
 
         [SerializeField] bool bDebug = true;
 
@@ -26,20 +26,16 @@ namespace BT.Abilities
 
         }
 
-        private void Start() 
-        {
-            targetTag = (myTag == "Enemy" ? "Player" : "Enemy");
-        }
-
         private void Move()
         {
             transform.Translate(Vector3.forward * sourceAbility.speed * Time.deltaTime);
         }
 
-        public void Initialize(Ability ability, string shooterTag)
+        public void Initialize(GameObject attacker, Ability ability)
         {
+            sourceAttacker = attacker;
             sourceAbility = ability;
-            myTag = shooterTag;
+
 
             StartCoroutine(DestroyMe());
         }
@@ -67,15 +63,16 @@ namespace BT.Abilities
         private void OnTriggerEnter(Collider other) 
         {
 
-            if (bDebug) Debug.Log("My tag: " + myTag + " and the hit tag: " + other.tag + " of " + other.gameObject.name);
-            if (myTag == other.tag) return;
+            if (bDebug) Debug.Log("Came from: " + sourceAttacker.name + " and the hit: " + other.gameObject.name);
+            //First make sure we didn't hit ourselves.
+            if (other.gameObject == sourceAttacker.gameObject) return;
             //Check if we are hitting the player, and if the player is invulnerable.
             if ((other.tag == "Player")&&(other.GetComponent<States>().GetState((int)PlayerPassive.Invulnerable)))
             {
                 Impact();
                 return;
             }
-            if ((sourceAbility.isPassThroughEnemies)&&(other.tag==targetTag))
+            if ((sourceAbility.isPassThroughEnemies)&&(other.GetComponent<Health>() != null))
             {
                 other.GetComponent<Health>().TakeDamage(sourceAbility.damage);
                 //Potential bug here:  If it passes through, enemy takes damage, and then detonates next to enemy, he takes damage twice.
@@ -85,7 +82,7 @@ namespace BT.Abilities
             {
 
                 //I really feel like there's a better way to refactor all this as I have duplicative if statements and duplicative code.
-                if (other.tag == targetTag)
+                if ((other.gameObject != sourceAttacker.gameObject) && (other.GetComponent<Health>() != null))
                 {
                     other.GetComponent<Health>().TakeDamage(sourceAbility.damage);
                     if (sourceAbility.objectToSpawnOnImpact != null)
@@ -112,11 +109,12 @@ namespace BT.Abilities
             foreach (Collider collider in hitColliders)
             {
                 if (bDebug) Debug.Log("Exploding on: " + collider.gameObject.name);
+
                 //Checking the "other" parameter so we don't do double-damage.
                 if ((collider == other)||(collider.GetComponent<States>().GetState((int)PlayerPassive.Invulnerable))) continue;
 
 
-                if (collider.tag == targetTag)
+                if ((other.gameObject != sourceAttacker.gameObject)&&(other.GetComponent<Health>() != null))
                 {
                     collider.GetComponent<Health>().TakeDamage(sourceAbility.damage);
                     if (sourceAbility.objectToSpawnOnImpact != null)

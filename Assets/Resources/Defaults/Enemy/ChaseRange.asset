@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ChaseRange
   m_EditorClassIdentifier: 
   Description: Chase the player if she is closer than this number.
-  value: 3
+  value: 6.51

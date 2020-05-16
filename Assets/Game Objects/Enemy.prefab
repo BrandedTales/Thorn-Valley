@@ -14,8 +14,11 @@ GameObject:
   - component: {fileID: 8433606156709489543}
   - component: {fileID: 8433606156709489542}
   - component: {fileID: 8433606156709489592}
-  - component: {fileID: 8433606156709489537}
   - component: {fileID: 8433606157477305116}
+  - component: {fileID: 3064570570672360751}
+  - component: {fileID: 8433606157477305117}
+  - component: {fileID: 8433606157477305118}
+  - component: {fileID: 8433606157477305119}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -137,47 +140,6 @@ MonoBehaviour:
     constantValue: 0
     variable: {fileID: 11400000, guid: b4c1612e5054bbe4c9f657ce6acdaf65, type: 2}
   currentHealth: 0
---- !u!114 &8433606156709489537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8433606156709489536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4d2983c1ba59254781b484aa800d4b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pathOfInterest:
-  - {fileID: 0}
-  - {fileID: 0}
-  waitDuringPatrols:
-    useConstant: 0
-    constantValue: 0
-    variable: {fileID: 11400000, guid: e7386a603ffc56e419df8255ef02f781, type: 2}
-  distanceTolerance:
-    useConstant: 0
-    constantValue: 0
-    variable: {fileID: 11400000, guid: 9ef85ed3d0c74ac499b5d0d26468bfe9, type: 2}
-  walkSpeed:
-    useConstant: 0
-    constantValue: 0
-    variable: {fileID: 11400000, guid: 3b0f6e6a78511594cb549f6582b470e9, type: 2}
-  oneWay: 0
-  fleeThreshold:
-    useConstant: 1
-    constantValue: 50
-    variable: {fileID: 0}
-  chaseRange:
-    useConstant: 0
-    constantValue: 0
-    variable: {fileID: 11400000, guid: 3cb2eb5f72a1fcc49a6b6e285f6bde40, type: 2}
-  runSpeed:
-    useConstant: 0
-    constantValue: 0
-    variable: {fileID: 11400000, guid: 4a9fd4b498ff1764b94155f04abaa5b6, type: 2}
-  bDebug: 1
 --- !u!54 &8433606157477305116
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -194,3 +156,87 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3064570570672360751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433606156709489536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598d7f9345bd4f34f9ea8d3f74635abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bDebug: 0
+--- !u!114 &8433606157477305117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433606156709489536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ef79409e139dbb4a83ddf59f1ebdf28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange:
+    useConstant: 1
+    constantValue: 10000
+    variable: {fileID: 0}
+  attackAbility: {fileID: 11400000, guid: b0266097023cf8e46bb1aefd0353ed96, type: 2}
+--- !u!114 &8433606157477305118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433606156709489536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eab32cca200519c49b589670535da934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseDistance:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 3cb2eb5f72a1fcc49a6b6e285f6bde40, type: 2}
+  suspicionTime:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: e7386a603ffc56e419df8255ef02f781, type: 2}
+  fleeThreshold:
+    useConstant: 1
+    constantValue: 50
+    variable: {fileID: 0}
+  isAutoshooter: 0
+  waypointTolerance:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 9ef85ed3d0c74ac499b5d0d26468bfe9, type: 2}
+  dwellTime:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: e7386a603ffc56e419df8255ef02f781, type: 2}
+  patrolSpeedFraction:
+    useConstant: 1
+    constantValue: 0.4
+    variable: {fileID: 0}
+  patrolPath: {fileID: 0}
+  hasRandomMovement: 0
+  minWanderDistance: 1.014
+  maxWanderDistance: 2
+  bDebug: 0
+--- !u!114 &8433606157477305119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433606156709489536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a54a7b6cb297ac49bdf28825d613510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

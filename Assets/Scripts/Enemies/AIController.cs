@@ -29,9 +29,14 @@ namespace BT.Enemies
         [Range(2,4)][SerializeField] float maxWanderDistance;
         #endregion 
 
+        [Header("Charmed")]
+        [SerializeField] bool isCharmed = false;
+        //[SerializeField] FloatReference followDistance;  Maybe later.
+        [SerializeField] FloatReference charmDuration;
+
         Fighter fighter;
         Health health;
-        GameObject player;
+        GameObject target;
         Mover mover;
         Vector3 nextWaypoint;
 
@@ -39,6 +44,7 @@ namespace BT.Enemies
         float timeSinceLastSeenPlayer = Mathf.Infinity;
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
         float timeSinceLastShot = 0;
+        float timeSinceCharmed = Mathf.Infinity;
 
         int currentWaypointIndex = 0;
 
@@ -48,7 +54,7 @@ namespace BT.Enemies
         {
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
-            player = GameObject.FindWithTag("Player");
+            target = GameObject.FindWithTag("Player");
             mover = GetComponent<Mover>();
 
             guardPosition = transform.position;
@@ -56,17 +62,32 @@ namespace BT.Enemies
 
         }
 
+        public void BecomeCharmed()
+        {
+            if (bDebug) Debug.Log(gameObject.name + " has become charmed.");
+            timeSinceCharmed = 0;
+            isCharmed = true;
+            target = null;
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+
         private void Update()
         {
 
+            if (bDebug&&(target!=null)) Debug.Log("Currently targetting: " + target.name);
             if (health.IsDead()) return;
 
-            if ((!player.GetComponent<States>().GetState((int)PlayerPassive.Invisible))&&(health.HealthPercentage() < fleeThreshold))
+            if (isCharmed)
+            {
+                if (bDebug) Debug.Log("Charmed " + gameObject.name + " finding a new target.");
+                CharmedBehavior();
+            }
+            else if ((target.tag=="Player")&&(!target.GetComponent<States>().GetState((int)PlayerPassive.Invisible))&&(health.HealthPercentage() < fleeThreshold))
             {
                 if (bDebug) Debug.Log("Flee Behavior" + health.HealthPercentage());
                 FleeBehavior();
             }
-            if (InAttackRangeOfPlayer() && fighter.CanAttack(player))
+            else if (InAttackRangeOfTarget(target) && fighter.CanAttack(target))
             {
                 timeSinceLastSeenPlayer = 0;
                 AttackBehavior();
@@ -83,9 +104,23 @@ namespace BT.Enemies
             UpdateTimers();
         }
 
+        private void CharmedBehavior()
+        {
+            if (target == null)
+            {
+                fighter.CharmFindTarget();
+                target = fighter.GetTarget().gameObject;
+            }
+            if (timeSinceCharmed >= charmDuration.value)
+            {
+                isCharmed = false;
+                target = GameObject.FindWithTag("Player");
+            }
+        }
+
         private void FleeBehavior()
         {
-            Vector3 direction = Vector3.Normalize(transform.position - player.transform.position);
+            Vector3 direction = Vector3.Normalize(transform.position - target.transform.position);
             if (bDebug) Debug.Log(direction);
             mover.StartMoveAction(direction + transform.position, 1);
         }
@@ -95,6 +130,7 @@ namespace BT.Enemies
             timeSinceLastSeenPlayer += Time.deltaTime;
             timeSinceArrivedAtWaypoint += Time.deltaTime;
             timeSinceLastShot += Time.deltaTime;
+            timeSinceCharmed += Time.deltaTime;
         }
 
         private void MoveBehavior()
@@ -158,14 +194,14 @@ namespace BT.Enemies
 
         private void AttackBehavior()
         {
-            fighter.Attack(player);
+            fighter.Attack(target);
         }
 
-        private bool InAttackRangeOfPlayer()
+        private bool InAttackRangeOfTarget(GameObject target)
         {            
 
-            float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-            return distanceToPlayer < chaseDistance;
+            float distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
+            return distanceToTarget < chaseDistance;
         }
 
         //Called by Unity

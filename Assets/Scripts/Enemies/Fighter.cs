@@ -68,6 +68,20 @@ namespace BT.Enemies
             //GetComponent<Animator>().SetTrigger("attack");
         }
 
+        public void CharmFindTarget()
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
+            Debug.Log(gameObject.name + " searching for potential new targets.");
+            foreach (Collider collider in hitColliders)
+            {
+                if ((collider.tag == "Enemy")&&(collider.gameObject != this.gameObject))
+                {
+                    target = collider.GetComponent<Health>();
+                    return;
+                }
+            }
+        }
+
         public bool CanAttack(GameObject combatTarget)
         {
             States playerStates = GameObject.FindWithTag("Player").GetComponent<States>();

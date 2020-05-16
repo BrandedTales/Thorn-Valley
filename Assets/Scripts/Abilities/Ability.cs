@@ -85,7 +85,7 @@ namespace BT.Abilities
             eulers.z = 0;
             abilitySpawn.transform.eulerAngles = eulers;
 
-            abilitySpawn.Initialize(this, shooterOrigin.tag);
+            abilitySpawn.Initialize(shooterOrigin, this);
             if (isConnectedToPlayer)
                 abilitySpawn.transform.parent = shooterOrigin.transform;
         }

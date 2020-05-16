@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackAbility: {fileID: 11400000, guid: 229fccc0486cced43a4dbba2c435c869, type: 2}
-  defenseAbility: {fileID: 11400000, guid: f533b47337eda0148999cb46839f9e6c, type: 2}
+  defenseAbility: {fileID: 11400000, guid: e13a02bd02566f24680086ed92526c49, type: 2}
   utilityAbility: {fileID: 11400000, guid: 6e001020f67bef343a0f7dd31aa116b3, type: 2}
   passiveAbility: {fileID: 11400000, guid: 6792274d6d773534ba2b3662226e6f0f, type: 2}
   superJump:
@@ -1175,7 +1175,7 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: 50246440a0d36c341b7c214359493711, type: 2}
-  bDebug: 1
+  bDebug: 0
 --- !u!114 &1490074780
 MonoBehaviour:
   m_ObjectHideFlags: 0
