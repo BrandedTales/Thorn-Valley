@@ -8,18 +8,20 @@ using UnityEngine;
 namespace BT.Abilities
 {
 
+    public enum OutputType { SpawnObject, ActivateLocation, State }
+    
     [CreateAssetMenu(fileName = "New Ability", menuName = "Thorn Valley/Create Ability")]
     public class Ability : ScriptableObject
     {
         public enum AbilityType { Attack, Defense, Utility, Passive }
         public enum ElementType { Air, Water, Fire, Earth, Life }
-        public enum OutputType { SpawnObject, ActivateLocation, State}
+
 
         [Header("General Traits")]
         [SerializeField] StringReference abilityName;
         [SerializeField] AbilityType abilityType;
         [SerializeField] ElementType elementType;
-        [SerializeField] OutputType outputType;
+        public OutputType outputType;
 
         [Header("Passive State Options")]
         public PlayerPassive passiveState;
@@ -66,7 +68,7 @@ namespace BT.Abilities
             States playerStates = GameObject.FindWithTag("Player").GetComponent<States>();
             if (playerStates != null)
             {
-                playerStates.ClearStates();
+                //playerStates.ClearStates();
                 playerStates.SetState((int)passiveState, true);
             }
         }

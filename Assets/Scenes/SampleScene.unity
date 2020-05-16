@@ -635,6 +635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStates: 
+  bDebug: 0
 --- !u!1001 &2068161275090788916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -653,7 +654,7 @@ PrefabInstance:
     - target: {fileID: 1490074785, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
       propertyPath: defenseAbility
       value: 
-      objectReference: {fileID: 11400000, guid: 49963a10eb6bbfa40b1b6403697225bc,
+      objectReference: {fileID: 11400000, guid: f533b47337eda0148999cb46839f9e6c,
         type: 2}
     - target: {fileID: 1490074785, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
       propertyPath: attackAbility
@@ -665,6 +666,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 85ee977f61d16724a9572f14552db527,
         type: 2}
+    - target: {fileID: 1490074785, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
+      propertyPath: superJump
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2068161274362364793, guid: ddf45a12e29b25f4493ecdd7baf0c4da,
         type: 3}
       propertyPath: characterLocomotion.runSpeed
@@ -910,9 +915,10 @@ MonoBehaviour:
     constantValue: 0.4
     variable: {fileID: 0}
   patrolPath: {fileID: 0}
-  hasRandomMovement: 1
+  hasRandomMovement: 0
   minWanderDistance: 1.014
   maxWanderDistance: 2
+  bDebug: 0
 --- !u!114 &8433606157477305119
 MonoBehaviour:
   m_ObjectHideFlags: 0

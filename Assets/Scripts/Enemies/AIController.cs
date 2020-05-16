@@ -41,6 +41,7 @@ namespace BT.Enemies
 
         int currentWaypointIndex = 0;
 
+        [SerializeField] bool bDebug = true;
 
         private void Start() 
         {
@@ -59,9 +60,9 @@ namespace BT.Enemies
 
             if (health.IsDead()) return;
 
-            if (health.HealthPercentage() < fleeThreshold)
+            if ((!player.GetComponent<States>().GetState((int)PlayerPassive.Invisible))&&(health.HealthPercentage() < fleeThreshold))
             {
-                Debug.Log("Flee Behavior" + health.HealthPercentage());
+                if (bDebug) Debug.Log("Flee Behavior" + health.HealthPercentage());
                 FleeBehavior();
             }
             if (InAttackRangeOfPlayer() && fighter.CanAttack(player))
@@ -84,7 +85,7 @@ namespace BT.Enemies
         private void FleeBehavior()
         {
             Vector3 direction = Vector3.Normalize(transform.position - player.transform.position);
-            Debug.Log(direction);
+            if (bDebug) Debug.Log(direction);
             mover.StartMoveAction(direction + transform.position, 1);
         }
 
@@ -136,7 +137,7 @@ namespace BT.Enemies
                 float newX = UnityEngine.Random.Range(minWanderDistance, maxWanderDistance) * ((int)UnityEngine.Random.Range(0, 2) * 2 - 1);
                 float newZ = UnityEngine.Random.Range(minWanderDistance, maxWanderDistance) * ((int)UnityEngine.Random.Range(0, 2) * 2 - 1);
                 Vector3 newLocation = new Vector3(newX, 0, newZ);
-                Debug.Log("Wander to: " + newLocation);
+                if (bDebug) Debug.Log("Wander to: " + newLocation);
                 nextWaypoint = transform.position + newLocation;
             }
             else

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using BT.Variables;
 using BT.Core;
 using UnityEngine;
+using UnityEngine.AI;
+using GameCreator.Characters;
 
 namespace BT.Abilities
 {
@@ -18,11 +20,41 @@ namespace BT.Abilities
         float defenseTimer = 0;
         float utilityTimer = 0;
 
+        float defaultJump;
+        public float superJump;
+
+        States myStates;
+        PlayerCharacter pc;
+
+        [SerializeField] bool bDebug = true;
 
         private void Start() 
         {
+            pc = GetComponent<PlayerCharacter>();
+            if (pc == null)
+                Debug.LogError("No locomotion object on player.");
+
+            defaultJump = pc.characterLocomotion.jumpForce;
+            myStates = GetComponent<States>();
+
+            myStates.StateEngaged += UpdateJump;
             //Test Code until Wands have been created.
             EquipPassive();
+            
+
+        }
+
+        private void UpdateJump()
+        {
+            if (bDebug) Debug.Log("Jump event called.");
+            if (myStates.GetState((int)PlayerPassive.Jump))
+            {
+                pc.characterLocomotion.jumpForce = superJump;
+            }
+            else
+            {
+                pc.characterLocomotion.jumpForce = defaultJump;
+            }
         }
 
         private void EquipPassive()
@@ -72,7 +104,7 @@ namespace BT.Abilities
             }
             else
             {
-                Debug.Log("Cooldown: " + utilityTimer + "/" + utilityAbility.cooldown.value);
+                if (bDebug) Debug.Log("Cooldown: " + utilityTimer + "/" + utilityAbility.cooldown.value);
             }
         }
 
@@ -85,7 +117,7 @@ namespace BT.Abilities
             }
             else
             {
-                Debug.Log("Cooldown: " + defenseTimer + "/" + defenseAbility.cooldown.value);
+                if (bDebug) Debug.Log("Cooldown: " + defenseTimer + "/" + defenseAbility.cooldown.value);
             }
         }
 
@@ -98,15 +130,27 @@ namespace BT.Abilities
             }
             else
             {
-                Debug.Log("Cooldown: " + attackTimer + "/" + attackAbility.cooldown.value);
+                if (bDebug) Debug.Log("Cooldown: " + attackTimer + "/" + attackAbility.cooldown.value);
             }
         }
 
         private IEnumerator CastAbility(Ability activeAbility)
         {
             yield return new WaitForSeconds(activeAbility.castTime.value);
-            activeAbility.Execute(this.gameObject);
+            if (activeAbility.outputType==OutputType.SpawnObject)
+                activeAbility.Execute(this.gameObject);
+            else if (activeAbility.outputType == OutputType.State)
+            {
+                if (bDebug) Debug.Log("Triggering " + activeAbility.passiveState);
+                myStates.SetState((int)activeAbility.passiveState, true);
+                yield return new WaitForSeconds(activeAbility.stateDuration.value);
+                if (bDebug) Debug.Log("Turning off " + activeAbility.passiveState);
+                myStates.SetState((int)activeAbility.passiveState, false);
+
+            }
         }
+
+
 
         //Need to validate types are appropriate when using abilities/setting the ability?  I dunno.
 

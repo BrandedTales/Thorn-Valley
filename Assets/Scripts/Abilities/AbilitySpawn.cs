@@ -69,7 +69,11 @@ namespace BT.Abilities
 
             if (bDebug) Debug.Log("My tag: " + myTag + " and the hit tag: " + other.tag + " of " + other.gameObject.name);
             if (myTag == other.tag) return;
-
+            if (other.GetComponent<States>().GetState((int)PlayerPassive.Invulnerable))
+            {
+                Impact();
+                return;
+            }
             if ((sourceAbility.isPassThroughEnemies)&&(other.tag==targetTag))
             {
                 other.GetComponent<Health>().TakeDamage(sourceAbility.damage);
@@ -107,10 +111,10 @@ namespace BT.Abilities
             foreach (Collider collider in hitColliders)
             {
                 if (bDebug) Debug.Log("Exploding on: " + collider.gameObject.name);
-                
-                if (collider == other) continue;
-
                 //Checking the "other" parameter so we don't do double-damage.
+                if ((collider == other)||(collider.GetComponent<States>().GetState((int)PlayerPassive.Invulnerable))) continue;
+
+
                 if (collider.tag == targetTag)
                 {
                     collider.GetComponent<Health>().TakeDamage(sourceAbility.damage);

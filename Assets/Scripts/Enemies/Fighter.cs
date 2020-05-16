@@ -63,13 +63,16 @@ namespace BT.Enemies
             attackAbility.Execute(this.gameObject);
 
             //Once the animator is set up and working, in theory the actually triggering of damage would take place in the "Hit" phase.
+            //Coupled with that, the Execute above would be wrapped into "hit" and we'd have the if/else to account for ranged vs melee.
             //GetComponent<Animator>().ResetTrigger("stopAttack");
             //GetComponent<Animator>().SetTrigger("attack");
         }
 
         public bool CanAttack(GameObject combatTarget)
         {
+            States playerStates = GameObject.FindWithTag("Player").GetComponent<States>();
             if (combatTarget == null) return false;
+            if (playerStates.GetState((int)PlayerPassive.Invisible)) return false;
             Health targetToTest = combatTarget.GetComponent<Health>();
             return ((targetToTest != null) && (!targetToTest.IsDead()));
         }
@@ -77,7 +80,8 @@ namespace BT.Enemies
         //Animation Event
         void Hit()
         {
-            //Replace this text once I get damage into the mix.
+            //Replace this text once we add animations.  This should either fire off the ability noted in "TriggerAttack" or it should deal melee damage.
+            //If it deals melee, make sure to account for invulnerability.
             //target.TakeDamage(gameObject, currentAbility.GetDamage());
         }
         
