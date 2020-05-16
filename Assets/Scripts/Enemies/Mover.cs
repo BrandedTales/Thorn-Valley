@@ -17,6 +17,10 @@ namespace BT.Enemies
 
         float maxSpeed;
 
+        bool isEntangled;
+
+        [SerializeField] bool bDebug = true;
+
         private void Start() 
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
@@ -26,8 +30,23 @@ namespace BT.Enemies
         void Update()
         {
             navMeshAgent.enabled = !health.IsDead();
+            if (IsEntangled()) Cancel();
 
             UpdateAnimator();
+        }
+
+        private bool IsEntangled()
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, GetComponent<CapsuleCollider>().radius);
+
+            foreach (Collider collider in hitColliders)
+            {
+                if (collider.GetComponent<StopMovement>() != null) 
+                    return true;
+            }
+            
+            return false;
+
         }
 
         public void StartMoveAction(Vector3 destination, float speedFraction)
@@ -54,11 +73,16 @@ namespace BT.Enemies
 
         public void MoveTo(Vector3 destination, float speedFraction)
         {
-            navMeshAgent.isStopped = false;
-            navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
-            navMeshAgent.destination = destination;
+            if (bDebug) Debug.Log("Enemy is Entangled: " + IsEntangled());
+            if (IsEntangled()) 
+                Cancel();
+            else
+            {
+                navMeshAgent.isStopped = false;
+                navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
+                navMeshAgent.destination = destination;
+            }
         }
-
 
     }
 

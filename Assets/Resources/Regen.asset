@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fcc432ff0b61d648be9d8b943bb7f98, type: 3}
-  m_Name: Fire-Defense
+  m_Name: Regen
   m_EditorClassIdentifier: 
   abilityName:
     useConstant: 1
-    constantValue: Flamewall
+    constantValue: 
     variable: {fileID: 0}
-  abilityType: 1
-  elementType: 2
-  outputType: 0
-  passiveState: 0
+  abilityType: 3
+  elementType: 4
+  outputType: 2
+  passiveState: 3
   stateDuration:
     useConstant: 1
     constantValue: 0
@@ -27,30 +27,29 @@ MonoBehaviour:
   castTime:
     useConstant: 1
     constantValue: 0
-    variable: {fileID: 11400000, guid: 7bbd08c83d4a09f4db487c226976f716, type: 2}
+    variable: {fileID: 0}
   cooldown:
     useConstant: 1
     constantValue: 0
-    variable: {fileID: 11400000, guid: d4e7eddc39f913d41a5ac26ec897e042, type: 2}
-  projectilePrefab: {fileID: 5177165825274695718, guid: 7012c79a6cd348f4bae17ccdbab96ee5,
-    type: 3}
+    variable: {fileID: 0}
+  projectilePrefab: {fileID: 0}
   offset:
     useConstant: 1
-    constantValue: 1
-    variable: {fileID: 11400000, guid: 082da92be18eb0641bc740ae94d101a0, type: 2}
+    constantValue: 0
+    variable: {fileID: 0}
   isConnectedToPlayer: 0
   duration:
     useConstant: 1
-    constantValue: 5
-    variable: {fileID: 11400000, guid: 19c4b310ef789e148939fae11516b25c, type: 2}
+    constantValue: 0
+    variable: {fileID: 0}
   speed:
     useConstant: 1
     constantValue: 0
-    variable: {fileID: 11400000, guid: 5ac088b968c1114439a7cc24ac6aeaed, type: 2}
+    variable: {fileID: 0}
   damage:
-    useConstant: 0
+    useConstant: 1
     constantValue: 0
-    variable: {fileID: 11400000, guid: 1df312f958bbef84885b31914623290b, type: 2}
+    variable: {fileID: 0}
   triggerInterval:
     useConstant: 1
     constantValue: 0
@@ -61,5 +60,5 @@ MonoBehaviour:
     constantValue: 0
     variable: {fileID: 0}
   isPassThroughEnemies: 0
-  isNeverImpact: 1
+  isNeverImpact: 0
   bDebug: 1

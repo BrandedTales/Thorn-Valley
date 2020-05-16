@@ -21,6 +21,10 @@ namespace BT.Core
          * Invulnerable: Prevents enemies from being able to damage the player.
          *              - Right now the only changes are within the AbilitySpawn module.  TriggerEnter and Explode both check for Invulnerability state.
          *              - Made a note to add proper logic once Fighter is updated for melee (which is pending the animator being activated.)
+         * Light: Illuminates a small area around the player.
+         *              - Added a light object attached to the player.  Event state called in PAM to Update light.
+         * Regen: Heals player a set amount over a set timer.
+         *              - Added a check for this state in the PAM Update() function.
          */
 
         public event Action StateEngaged;

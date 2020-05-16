@@ -69,7 +69,8 @@ namespace BT.Abilities
 
             if (bDebug) Debug.Log("My tag: " + myTag + " and the hit tag: " + other.tag + " of " + other.gameObject.name);
             if (myTag == other.tag) return;
-            if (other.GetComponent<States>().GetState((int)PlayerPassive.Invulnerable))
+            //Check if we are hitting the player, and if the player is invulnerable.
+            if ((other.tag == "Player")&&(other.GetComponent<States>().GetState((int)PlayerPassive.Invulnerable)))
             {
                 Impact();
                 return;

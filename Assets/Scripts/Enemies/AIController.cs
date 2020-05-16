@@ -11,6 +11,7 @@ namespace BT.Enemies
         #region Editor Fields
         [Header("Aggression")]
         [SerializeField] FloatReference chaseDistance;
+
         [SerializeField] FloatReference suspicionTime;
         [SerializeField] FloatReference fleeThreshold;
         [SerializeField] bool isAutoshooter;

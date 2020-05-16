@@ -9,13 +9,12 @@ namespace BT.Abilities
 {
 
     public enum OutputType { SpawnObject, ActivateLocation, State }
-    
+
     [CreateAssetMenu(fileName = "New Ability", menuName = "Thorn Valley/Create Ability")]
     public class Ability : ScriptableObject
     {
         public enum AbilityType { Attack, Defense, Utility, Passive }
         public enum ElementType { Air, Water, Fire, Earth, Life }
-
 
         [Header("General Traits")]
         [SerializeField] StringReference abilityName;
@@ -81,6 +80,11 @@ namespace BT.Abilities
 
             Vector3 offsetVector = (shooterOrigin.transform.forward * offset) + new Vector3(0,1f,0);
             AbilitySpawn abilitySpawn = Instantiate(projectilePrefab, shooterOrigin.transform.position+offsetVector, shooterOrigin.transform.rotation);
+            Vector3 eulers = abilitySpawn.transform.eulerAngles;
+            eulers.x = 0;
+            eulers.z = 0;
+            abilitySpawn.transform.eulerAngles = eulers;
+
             abilitySpawn.Initialize(this, shooterOrigin.tag);
             if (isConnectedToPlayer)
                 abilitySpawn.transform.parent = shooterOrigin.transform;

@@ -11,45 +11,58 @@ namespace BT.Abilities
 {
     public class PlayerAbilityManager : MonoBehaviour
     {
+        [Header("Abilities")]
         public Ability attackAbility;
         public Ability defenseAbility;
         public Ability utilityAbility;
         public Ability passiveAbility;
 
+        [Header("State Details")]
+        public FloatReference superJump;
+        public GameObject lightSource;
+        [Space(15)]
+        public FloatReference regenTickAmount;
+        public FloatReference regenHealthAmount;
+
+        [Header("Debugging")]
+        [SerializeField] bool bDebug = true;
+
+        States myStates;
+        Health health;
+        PlayerCharacter pc;
+        float defaultJump;
+
         float attackTimer = 0;
         float defenseTimer = 0;
         float utilityTimer = 0;
-
-        float defaultJump;
-        public float superJump;
-
-        States myStates;
-        PlayerCharacter pc;
-
-        [SerializeField] bool bDebug = true;
+        float regenTimer = 0;
 
         private void Start() 
         {
             pc = GetComponent<PlayerCharacter>();
             if (pc == null)
                 Debug.LogError("No locomotion object on player.");
-
             defaultJump = pc.characterLocomotion.jumpForce;
+            
             myStates = GetComponent<States>();
 
             myStates.StateEngaged += UpdateJump;
+            myStates.StateEngaged += UpdateLight;
+
+            health = GetComponent<Health>();
             //Test Code until Wands have been created.
             EquipPassive();
             
 
         }
 
+        #region Methods from Event Invokes
         private void UpdateJump()
         {
             if (bDebug) Debug.Log("Jump event called.");
             if (myStates.GetState((int)PlayerPassive.Jump))
             {
-                pc.characterLocomotion.jumpForce = superJump;
+                pc.characterLocomotion.jumpForce = superJump.value;
             }
             else
             {
@@ -57,15 +70,35 @@ namespace BT.Abilities
             }
         }
 
+        private void UpdateLight()
+        {
+            if (bDebug) Debug.Log("Light event called.");
+            lightSource.SetActive(myStates.GetState((int)PlayerPassive.Light));
+
+
+        }
+
+        #endregion
+
+        #region Test Code Methods to validate functionality.
         private void EquipPassive()
         {
             if (passiveAbility == null) return;
             passiveAbility.EngageState();
         }
 
+        #endregion
+
         // Update is called once per frame
         void Update()
         {
+
+            if ((myStates.GetState((int)PlayerPassive.Regen))&&(regenTimer >= regenTickAmount.value))
+            {
+                regenTimer = 0;
+                health.RecoverHealth(regenHealthAmount.value);
+            }
+
             if (Input.GetButtonDown("Fire1"))
             {
                 AttackHandler();
@@ -93,6 +126,7 @@ namespace BT.Abilities
             attackTimer += Time.deltaTime;
             defenseTimer += Time.deltaTime;
             utilityTimer += Time.deltaTime;
+            regenTimer += Time.deltaTime;
         }
 
         private void UtilityHandler()

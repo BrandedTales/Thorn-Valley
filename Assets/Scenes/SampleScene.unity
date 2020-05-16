@@ -604,38 +604,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1705285174 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2068161274362364797, guid: ddf45a12e29b25f4493ecdd7baf0c4da,
-    type: 3}
-  m_PrefabInstance: {fileID: 2068161275090788916}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1705285175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705285174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 160f3d7492496e948b3530108a8cdc26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1705285176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705285174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e355ada0a0463408f696a71a4f24b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentStates: 
-  bDebug: 0
 --- !u!1001 &2068161275090788916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -643,37 +611,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1490074780, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
-      propertyPath: maxHealth.useConstant
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1490074780, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
-      propertyPath: maxHealth.constantValue
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 1490074785, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
       propertyPath: defenseAbility
       value: 
-      objectReference: {fileID: 11400000, guid: f533b47337eda0148999cb46839f9e6c,
+      objectReference: {fileID: 11400000, guid: 49963a10eb6bbfa40b1b6403697225bc,
         type: 2}
     - target: {fileID: 1490074785, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
-      propertyPath: attackAbility
-      value: 
-      objectReference: {fileID: 11400000, guid: 229fccc0486cced43a4dbba2c435c869,
-        type: 2}
-    - target: {fileID: 1490074785, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
-      propertyPath: passiveAbility
-      value: 
-      objectReference: {fileID: 11400000, guid: 85ee977f61d16724a9572f14552db527,
-        type: 2}
-    - target: {fileID: 1490074785, guid: ddf45a12e29b25f4493ecdd7baf0c4da, type: 3}
-      propertyPath: superJump
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2068161274362364793, guid: ddf45a12e29b25f4493ecdd7baf0c4da,
-        type: 3}
-      propertyPath: characterLocomotion.runSpeed
-      value: 5.5
+      propertyPath: bDebug
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2068161274362364794, guid: ddf45a12e29b25f4493ecdd7baf0c4da,
         type: 3}
@@ -914,7 +859,7 @@ MonoBehaviour:
     useConstant: 1
     constantValue: 0.4
     variable: {fileID: 0}
-  patrolPath: {fileID: 0}
+  patrolPath: {fileID: 1405543435}
   hasRandomMovement: 0
   minWanderDistance: 1.014
   maxWanderDistance: 2

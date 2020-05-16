@@ -12,6 +12,8 @@ namespace BT.Core
 
         bool isDead = false;
 
+
+
         private void Start() {
             currentHealth = maxHealth;
         }
@@ -24,6 +26,11 @@ namespace BT.Core
             {
                 Die();
             }
+        }
+
+        public void RecoverHealth(float heal)
+        {
+            currentHealth = Mathf.Clamp(currentHealth + heal, 0, maxHealth.value);
         }
 
         public float HealthPercentage()
