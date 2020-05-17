@@ -9,17 +9,17 @@ namespace BT.Abilities
 {
 
     public enum OutputType { SpawnObject, ActivateLocation, State }
+    public enum ElementType {None, Air, Water, Fire, Earth, Life }
+    public enum AbilityType { Attack, Defense, Utility, Passive }
 
     [CreateAssetMenu(fileName = "New Ability", menuName = "Thorn Valley/Create Ability")]
     public class Ability : ScriptableObject
     {
-        public enum AbilityType { Attack, Defense, Utility, Passive }
-        public enum ElementType { Air, Water, Fire, Earth, Life }
 
         [Header("General Traits")]
-        [SerializeField] StringReference abilityName;
-        [SerializeField] AbilityType abilityType;
-        [SerializeField] ElementType elementType;
+        [SerializeField] string abilityName;
+        public AbilityType abilityType;
+        public ElementType elementType;
         public OutputType outputType;
 
         [Header("Passive State Options")]

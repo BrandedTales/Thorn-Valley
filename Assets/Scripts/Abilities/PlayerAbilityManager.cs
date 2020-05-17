@@ -37,6 +37,8 @@ namespace BT.Abilities
         float utilityTimer = 0;
         float regenTimer = 0;
 
+        public event Action Interaction;
+
         private void Start() 
         {
             pc = GetComponent<PlayerCharacter>();
@@ -114,7 +116,7 @@ namespace BT.Abilities
 
             if (Input.GetButtonDown("Fire3"))
             {
-                UtilityHandler();
+                Interaction.Invoke();
             }
 
             UpdateTimers();
@@ -129,18 +131,18 @@ namespace BT.Abilities
             regenTimer += Time.deltaTime;
         }
 
-        private void UtilityHandler()
-        {
-            if (utilityTimer > utilityAbility.cooldown.value)
-            {
-                utilityTimer = 0;
-                utilityAbility.Execute(this.gameObject);
-            }
-            else
-            {
-                if (bDebug) Debug.Log("Cooldown: " + utilityTimer + "/" + utilityAbility.cooldown.value);
-            }
-        }
+        // private void UtilityHandler()
+        // {
+        //     if (utilityTimer > utilityAbility.cooldown.value)
+        //     {
+        //         utilityTimer = 0;
+        //         utilityAbility.Execute(this.gameObject);
+        //     }
+        //     else
+        //     {
+        //         if (bDebug) Debug.Log("Cooldown: " + utilityTimer + "/" + utilityAbility.cooldown.value);
+        //     }
+        // }
 
         private void DefenseHandler()
         {

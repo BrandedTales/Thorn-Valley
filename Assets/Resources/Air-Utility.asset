@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcc432ff0b61d648be9d8b943bb7f98, type: 3}
+  m_Name: Air-Utility
+  m_EditorClassIdentifier: 
+  abilityName: Whirlwind
+  abilityType: 2
+  elementType: 1
+  outputType: 1
+  passiveState: 0
+  stateDuration:
+    useConstant: 1
+    constantValue: 0
+    variable: {fileID: 0}
+  castTime:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 7bbd08c83d4a09f4db487c226976f716, type: 2}
+  cooldown:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: d4e7eddc39f913d41a5ac26ec897e042, type: 2}
+  projectilePrefab: {fileID: 0}
+  offset:
+    useConstant: 1
+    constantValue: 0
+    variable: {fileID: 0}
+  isConnectedToPlayer: 0
+  duration:
+    useConstant: 1
+    constantValue: 0
+    variable: {fileID: 0}
+  speed:
+    useConstant: 1
+    constantValue: 0
+    variable: {fileID: 0}
+  damage:
+    useConstant: 1
+    constantValue: 0
+    variable: {fileID: 0}
+  triggerInterval:
+    useConstant: 1
+    constantValue: 0
+    variable: {fileID: 0}
+  objectToSpawnOnImpact: {fileID: 0}
+  explosionRadius:
+    useConstant: 1
+    constantValue: 0
+    variable: {fileID: 0}
+  isPassThroughEnemies: 0
+  isNeverImpact: 0
+  bDebug: 1

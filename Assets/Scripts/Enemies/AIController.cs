@@ -109,7 +109,8 @@ namespace BT.Enemies
             if (target == null)
             {
                 fighter.CharmFindTarget();
-                target = fighter.GetTarget().gameObject;
+                if (fighter.GetTarget() != null)
+                    target = fighter.GetTarget().gameObject;
             }
             if (timeSinceCharmed >= charmDuration.value)
             {

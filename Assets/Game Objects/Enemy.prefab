@@ -227,6 +227,11 @@ MonoBehaviour:
   hasRandomMovement: 0
   minWanderDistance: 1.014
   maxWanderDistance: 2
+  isCharmed: 0
+  charmDuration:
+    useConstant: 1
+    constantValue: 10
+    variable: {fileID: 0}
   bDebug: 0
 --- !u!114 &8433606157477305119
 MonoBehaviour:

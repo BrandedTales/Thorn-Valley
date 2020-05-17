@@ -1158,7 +1158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7060859cf34e514d9e6d17c0d12aa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAbility: {fileID: 11400000, guid: 229fccc0486cced43a4dbba2c435c869, type: 2}
+  attackAbility: {fileID: 11400000, guid: e0e45ea2b687cd34999a186f8a7d2806, type: 2}
   defenseAbility: {fileID: 11400000, guid: e13a02bd02566f24680086ed92526c49, type: 2}
   utilityAbility: {fileID: 11400000, guid: 6e001020f67bef343a0f7dd31aa116b3, type: 2}
   passiveAbility: {fileID: 11400000, guid: 6792274d6d773534ba2b3662226e6f0f, type: 2}
