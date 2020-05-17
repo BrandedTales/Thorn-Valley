@@ -12,6 +12,7 @@ namespace BT.Core
         public PortalKey portalKey;
         public int sceneIndex = -1;
         public Transform spawnPoint;
+        public GameObject objectToTeleport;
 
         [Header("Debugging")]
         [SerializeField] bool bDebug = true;
@@ -40,11 +41,11 @@ namespace BT.Core
                 if (((this.portalKey) == portal.GetComponent<Teleporter>().portalKey)&&(gameObject != portal))
                 {
                     Debug.Log("Teleporting from " + gameObject.name + " to " + portal.name);
-                    Vector3 current = GameObject.FindWithTag("Player").transform.position;
+                    Vector3 current = objectToTeleport.transform.position;
                     Vector3 future = portal.GetComponent<Teleporter>().spawnPoint.transform.position;
 
                     Debug.Log("Current Location: " + current + " and Future location:" + future);
-                    GameObject.FindWithTag("Player").transform.position = future;
+                    objectToTeleport.transform.position = future;
                     return;
                 }
             }

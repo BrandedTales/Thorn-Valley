@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Damage
   m_EditorClassIdentifier: 
   Description: The default damage done by attacks.
-  value: 1
+  value: 3

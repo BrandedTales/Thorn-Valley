@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Cast Time
   m_EditorClassIdentifier: 
   Description: How long a spell takes to cast.
-  value: 0.2
+  value: 0
