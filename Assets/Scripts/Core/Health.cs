@@ -41,7 +41,12 @@ namespace BT.Core
         private void Die()
         {
             GetComponent<ActionScheduler>().CancelCurrentAction();
-            Destroy(gameObject);
+            if (gameObject.tag == "Enemy")
+            {
+                GetComponent<DropLoot>().Drop(transform);
+                Destroy(gameObject);
+            }
+
         }
 
         public bool IsDead()

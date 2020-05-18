@@ -9,6 +9,8 @@ namespace BT.Core
     public class Lootable : MonoBehaviour
     {
 
+        LootableBehavior lootableBehavior;
+
         [Header("General Details")]
         [SerializeField] string objectName;
         [SerializeField] GameObject lootableObject;
@@ -33,6 +35,8 @@ namespace BT.Core
         // Start is called before the first frame update
         void Start()
         {
+            lootableBehavior = GetComponent<LootableBehavior>();
+
             if (destroyTimer.value > 0)
                 StartCoroutine(DestroyMe());
         }
