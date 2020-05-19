@@ -87,6 +87,7 @@ namespace BT.Core
         private void CollectItem()
         {
             if (bDebug) Debug.Log("Item has been collected.");
+            lootableBehavior.CollectLoot();
             Destroy(gameObject);
         }
 
