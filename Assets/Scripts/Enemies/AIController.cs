@@ -82,9 +82,9 @@ namespace BT.Enemies
                 if (bDebug) Debug.Log("Charmed " + gameObject.name + " finding a new target.");
                 CharmedBehavior();
             }
-            else if ((target.tag=="Player")&&(!target.GetComponent<States>().GetState((int)PlayerPassive.Invisible))&&(health.HealthPercentage() < fleeThreshold))
+            else if ((target.tag=="Player")&&(!target.GetComponent<States>().GetState((int)PlayerPassive.Invisible))&&(health.GetHealthPercentage() < fleeThreshold))
             {
-                if (bDebug) Debug.Log("Flee Behavior" + health.HealthPercentage());
+                if (bDebug) Debug.Log("Flee Behavior" + health.GetHealthPercentage());
                 FleeBehavior();
             }
             else if (InAttackRangeOfTarget(target) && fighter.CanAttack(target))

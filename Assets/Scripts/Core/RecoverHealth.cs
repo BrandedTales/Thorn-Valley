@@ -8,6 +8,8 @@ namespace BT.Core
 
         Health playerHealth;
         public FloatReference healAmount;
+        public bool isMaxHealth = false;
+        public FloatReference refillPercent;
 
         private void Start() 
         {
@@ -16,7 +18,10 @@ namespace BT.Core
 
         public override void CollectLoot()
         {
-            playerHealth.RecoverHealth(healAmount);
+            if (isMaxHealth)
+                playerHealth.IncreaseMaxHealth(healAmount, refillPercent.value);
+            else
+                playerHealth.RecoverHealth(healAmount);
         }
     }
 }

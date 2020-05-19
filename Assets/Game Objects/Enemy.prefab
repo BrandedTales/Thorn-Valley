@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 8433606157477305117}
   - component: {fileID: 8433606157477305118}
   - component: {fileID: 8433606157477305119}
+  - component: {fileID: 1877462744}
+  - component: {fileID: 1877462733}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -245,3 +247,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a54a7b6cb297ac49bdf28825d613510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1877462744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433606156709489536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed85e1df9902994cbd7e3ce8bdf2e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropContents: {fileID: 11400000, guid: 45f70039f88f45b42a50830168912f39, type: 2}
+  spawnLootHeightOffset: 1
+--- !u!114 &1877462733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8433606156709489536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ef79409e139dbb4a83ddf59f1ebdf28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange:
+    useConstant: 1
+    constantValue: 200
+    variable: {fileID: 0}
+  attackAbility: {fileID: 11400000, guid: 229fccc0486cced43a4dbba2c435c869, type: 2}
