@@ -31,6 +31,7 @@ namespace BT.Core
         private void UpdateHealthAmount()
         {
             currentHealth.SetText(playerHealth.GetCurrentHealth().ToString());
+            maxHealth.SetText(playerHealth.GetMaxHealth().ToString());
         }
 
 

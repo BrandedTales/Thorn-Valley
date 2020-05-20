@@ -24,15 +24,21 @@ namespace BT.Core
 
         public event Action PlayerHealthChange;
 
+        [Header("Debugging")]
+        [SerializeField] bool bDebug = true;
+
         private void Start()
         {
             if (gameObject.tag == "Player") isPlayer = true;
             
             if (resetGameData.value && isPlayer)
             {
-                Debug.Log("Initializing player data for " + gameObject.name);
+                if (bDebug) Debug.Log("Initializing player data for " + gameObject.name);
+                if (bDebug) Debug.Log("Pre-initialize max: " + playerMaxHealth.value + "; current: " + playerCurrentHealth.value);
                 playerMaxHealth.variable.SetValue(maxHealthInitialization);
                 playerCurrentHealth.variable.SetValue(playerMaxHealth.value);
+
+                PlayerHealthChange.Invoke();
             }
 
         }

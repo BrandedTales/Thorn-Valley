@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb269da22929bc9408f905ec7789ec1b, type: 3}
   m_Name: PlayerStartingHealth
   m_EditorClassIdentifier: 
-  Description: The players starts the game with 3 health.
-  value: 3
+  Description: The players starts the game with this health.
+  value: 15

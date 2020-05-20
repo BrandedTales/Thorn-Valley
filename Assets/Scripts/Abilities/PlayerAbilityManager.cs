@@ -37,6 +37,9 @@ namespace BT.Abilities
         float utilityTimer = 0;
         float regenTimer = 0;
 
+        MainMenuDisplay mmd;
+        bool isGamePaused;
+
         public event Action Interaction;
 
         private void Start() 
@@ -52,10 +55,15 @@ namespace BT.Abilities
             myStates.StateEngaged += UpdateLight;
 
             health = GetComponent<Health>();
+
+            mmd = FindObjectOfType<MainMenuDisplay>();
+            if (mmd == null)
+                Debug.LogError("No main menu found.");
+
+            mmd.MenuLaunch += lockPlayerInput;
+
             //Test Code until Wands have been created.
             EquipPassive();
-            
-
         }
 
         #region Methods from Event Invokes
@@ -80,6 +88,12 @@ namespace BT.Abilities
 
         }
 
+        public void lockPlayerInput(bool menuOpen)
+        {
+            isGamePaused = menuOpen;
+            pc.characterLocomotion.SetIsControllable(!menuOpen);
+        }
+
         #endregion
 
         #region Test Code Methods to validate functionality.
@@ -94,6 +108,8 @@ namespace BT.Abilities
         // Update is called once per frame
         void Update()
         {
+
+            if (isGamePaused) return;
 
             if ((myStates.GetState((int)PlayerPassive.Regen))&&(regenTimer >= regenTickAmount.value))
             {
