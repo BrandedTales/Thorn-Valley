@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Fire-Utility
   m_EditorClassIdentifier: 
   abilityName: 
-  abilityType: 0
-  elementType: 0
-  outputType: 0
+  abilityType: 2
+  elementType: 3
+  outputType: 1
   passiveState: 0
   stateDuration:
     useConstant: 1
@@ -44,10 +44,6 @@ MonoBehaviour:
     constantValue: 0
     variable: {fileID: 0}
   damage:
-    useConstant: 1
-    constantValue: 0
-    variable: {fileID: 0}
-  triggerInterval:
     useConstant: 1
     constantValue: 0
     variable: {fileID: 0}

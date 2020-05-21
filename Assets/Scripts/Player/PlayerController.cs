@@ -39,7 +39,7 @@ namespace BT.Player
 
         [SerializeField] BoolVariable resetGameData;
 
-        private void Awake() 
+        private void Start() 
         {
             pc = GetComponent<PlayerCharacter>();
             if (pc == null)

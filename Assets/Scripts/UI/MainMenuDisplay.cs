@@ -13,8 +13,8 @@ namespace BT.UI
         [SerializeField] GameObject menuPanel;
         [SerializeField] bool bDebug = true;
 
-        GameEvent pauseGame;
-        GameEvent unpauseGame;
+        public GameEvent pauseGame;
+        public GameEvent unpauseGame;
 
 
         bool isOpen = false;

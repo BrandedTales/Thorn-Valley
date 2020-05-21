@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fcc432ff0b61d648be9d8b943bb7f98, type: 3}
-  m_Name: Fire-Defense
+  m_Name: PoisonSpit
   m_EditorClassIdentifier: 
-  abilityName: 
-  abilityType: 1
-  elementType: 3
+  abilityName: PoisonSpit
+  abilityType: 0
+  elementType: 2
   outputType: 0
   passiveState: 0
   stateDuration:
@@ -22,31 +22,32 @@ MonoBehaviour:
     constantValue: 0
     variable: {fileID: 0}
   castTime:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: dcd5edcb342503242a53034b6cfaff16, type: 2}
   cooldown:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
-  projectilePrefab: {fileID: 0}
+    variable: {fileID: 11400000, guid: 189e6655ad6006b42b009dfec5e8de73, type: 2}
+  projectilePrefab: {fileID: 6854140130801633934, guid: 3607955a7cfb1e140bc1a4a49842af47,
+    type: 3}
   offset:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: db355a66c88b84a4dbb085799a4e92fb, type: 2}
   isConnectedToPlayer: 0
   duration:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: 8eb646684007c2b4db62a7266a8dc89a, type: 2}
   speed:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: 735b10df29dc44744a6f5300664ac013, type: 2}
   damage:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: 276e26277b2c45441ae5a7cabd044635, type: 2}
   objectToSpawnOnImpact: {fileID: 0}
   explosionRadius:
     useConstant: 1

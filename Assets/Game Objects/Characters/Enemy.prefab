@@ -20,9 +20,10 @@ GameObject:
   - component: {fileID: 5027946413399982712}
   - component: {fileID: 5027946413399982713}
   - component: {fileID: 5027946413399982710}
+  - component: {fileID: 893673696}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 09eafcb652eab5d4ca63d4f820e8fae9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -131,39 +132,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistance:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: b8affcf2ff35f2b4f91425b3ea3d3d6d, type: 2}
   suspicionTime:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: 0f8a82a449ffb1940a67097cc520d0ed, type: 2}
   fleeThreshold:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: 64305edd4da3cfb4dbf3f6ee37073e28, type: 2}
   isAutoshooter: 0
   waypointTolerance:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: 9c796a211435a50408dc96ff7c4eee2d, type: 2}
   dwellTime:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: a5dbfe3c55f6d4f45ae6c92d9ab0de2f, type: 2}
   patrolSpeedFraction:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: c5e1e5db2eca5e94fafd412170bd9104, type: 2}
   patrolPath: {fileID: 0}
   hasRandomMovement: 0
   minWanderDistance: 0
-  maxWanderDistance: 0
+  maxWanderDistance: 2
   isCharmed: 0
   charmDuration:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: 5787fcac02a7df048b4a042383d9295d, type: 2}
   bDebug: 1
 --- !u!114 &5027946413399982717
 MonoBehaviour:
@@ -190,10 +191,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange:
-    useConstant: 1
+    useConstant: 0
     constantValue: 0
-    variable: {fileID: 0}
-  attackAbility: {fileID: 0}
+    variable: {fileID: 11400000, guid: b8affcf2ff35f2b4f91425b3ea3d3d6d, type: 2}
+  attackAbility: {fileID: 11400000, guid: 99e7c3a526882e0489438b2608ad9b92, type: 2}
 --- !u!114 &5027946413399982715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,10 +215,19 @@ MonoBehaviour:
     useConstant: 1
     constantValue: 0
     variable: {fileID: 0}
-  enemyCurrentHealth: 0
-  enemyMaxHealth: 0
-  resetGameData: {fileID: 0}
-  maxHealthInitialization: 0
+  playerHealthChange: {fileID: 0}
+  enemyCurrentHealth: 3
+  enemyMaxHealth: 3
+  resetGameData: {fileID: 11400000, guid: 878a028c67c15b24899ca70fe8b1aa78, type: 2}
+  maxHealthInitialization: 3
+  regenTickAmount:
+    useConstant: 1
+    constantValue: 0
+    variable: {fileID: 0}
+  regenHealthAmount:
+    useConstant: 1
+    constantValue: 0
+    variable: {fileID: 0}
   bDebug: 1
 --- !u!114 &5027946413399982712
 MonoBehaviour:
@@ -243,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d995355398903c4a9b49b73b6762e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropContents: {fileID: 0}
+  dropContents: {fileID: 11400000, guid: 8538cc655d6d2cb4bb637dbd4b30ba2e, type: 2}
   spawnLootHeightOffset: 1
 --- !u!114 &5027946413399982710
 MonoBehaviour:
@@ -258,3 +268,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bDebug: 1
+--- !u!195 &893673696
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5027946413399982707}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 4
+  m_Acceleration: 30
+  avoidancePriority: 50
+  m_AngularSpeed: 500
+  m_StoppingDistance: 0.1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

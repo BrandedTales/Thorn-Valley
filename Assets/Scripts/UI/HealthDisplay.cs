@@ -27,7 +27,7 @@ namespace BT.UI
 
         }
 
-        private void UpdateHealthAmount()
+        public void UpdateHealthAmount()
         {
             currentHealth.SetText(playerHealth.GetCurrentHealth().ToString());
             maxHealth.SetText(playerHealth.GetMaxHealth().ToString());

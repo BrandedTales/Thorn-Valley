@@ -8,7 +8,7 @@ using BT.Core;
 
 namespace BT.AI
 {
-
+    [RequireComponent(typeof(NavMeshAgent))]
     public class Mover : MonoBehaviour, IEnemyAction
     {
 

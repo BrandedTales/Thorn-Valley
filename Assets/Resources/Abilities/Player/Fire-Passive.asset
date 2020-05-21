@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fcc432ff0b61d648be9d8b943bb7f98, type: 3}
   m_Name: Fire-Passive
   m_EditorClassIdentifier: 
-  abilityName: 
-  abilityType: 0
-  elementType: 0
-  outputType: 0
-  passiveState: 0
+  abilityName: Light
+  abilityType: 3
+  elementType: 3
+  outputType: 2
+  passiveState: 2
   stateDuration:
     useConstant: 1
     constantValue: 0
@@ -44,10 +44,6 @@ MonoBehaviour:
     constantValue: 0
     variable: {fileID: 0}
   damage:
-    useConstant: 1
-    constantValue: 0
-    variable: {fileID: 0}
-  triggerInterval:
     useConstant: 1
     constantValue: 0
     variable: {fileID: 0}
