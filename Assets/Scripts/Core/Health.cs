@@ -1,6 +1,7 @@
 using UnityEngine;
 using BT.Variables;
 using System;
+using BT.Events;
 
 namespace BT.Core
 {
@@ -10,6 +11,7 @@ namespace BT.Core
         [Header("Player Settings")]
         [SerializeField] FloatReference playerMaxHealth;
         [SerializeField] FloatReference playerCurrentHealth;
+        public GameEvent playerHealthChange;
 
         [Header("Enemy Settings")]
         [SerializeField] float enemyCurrentHealth;
@@ -19,18 +21,32 @@ namespace BT.Core
         [SerializeField] BoolVariable resetGameData;
         [SerializeField] float maxHealthInitialization;
 
+        [Header("Regen Settings")]
+        public FloatReference regenTickAmount;
+        public FloatReference regenHealthAmount;
+
         bool isPlayer = false;
         bool isDead = false;
 
-        public event Action PlayerHealthChange;
+        ICharacter character;
+
+
+
+        States myStates;
 
         [Header("Debugging")]
         [SerializeField] bool bDebug = true;
 
         private void Start()
         {
-            if (gameObject.tag == "Player") isPlayer = true;
-            
+            character = GetComponent<ICharacter>();
+
+            if (gameObject.tag == "Player")
+            {
+                isPlayer = true;
+                myStates = GetComponent<States>();
+            }
+
             if (resetGameData.value && isPlayer)
             {
                 if (bDebug) Debug.Log("Initializing player data for " + gameObject.name);
@@ -38,9 +54,23 @@ namespace BT.Core
                 playerMaxHealth.variable.SetValue(maxHealthInitialization);
                 playerCurrentHealth.variable.SetValue(playerMaxHealth.value);
 
-                PlayerHealthChange.Invoke();
+                playerHealthChange.Raise();
             }
 
+
+        }
+
+        public float RegenHealth(float timer)
+        {
+            if (timer >= regenTickAmount.value)
+            {
+                RecoverHealth(regenHealthAmount.value);
+                return 0;
+            }
+            else
+            {
+                return timer;
+            }
         }
 
         public float GetMaxHealth()
@@ -59,7 +89,7 @@ namespace BT.Core
             if (isPlayer)
             {
                 playerCurrentHealth.variable.ApplyChange(-1 * damage);
-                PlayerHealthChange.Invoke();
+                playerHealthChange.Raise();
             }
             else 
             {
@@ -78,7 +108,7 @@ namespace BT.Core
             {
                 playerCurrentHealth.variable.ApplyChange(heal);
                 playerCurrentHealth.variable.SetValue(Mathf.Clamp(playerCurrentHealth.value, 0, playerMaxHealth.value));
-                PlayerHealthChange.Invoke();
+                playerHealthChange.Raise();
             }
             else
             {
@@ -93,18 +123,7 @@ namespace BT.Core
 
         private void Die()
         {
-            
-            if (isPlayer)
-            {
-                Debug.Log("And... we... die...");
-            }
-            else
-            {
-                GetComponent<ActionScheduler>().CancelCurrentAction();
-                GetComponent<DropLoot>().Drop(transform);
-                Destroy(gameObject);
-            }
-
+            character.Die();
         }
 
         public bool IsDead()
@@ -120,7 +139,7 @@ namespace BT.Core
                 playerCurrentHealth.variable.SetValue(playerMaxHealth.value * refillPercent);
             }
 
-            PlayerHealthChange.Invoke();
+            playerHealthChange.Raise();
 
         }
     }

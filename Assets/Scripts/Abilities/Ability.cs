@@ -39,7 +39,7 @@ namespace BT.Abilities
         
         [Header("Combat Implications")]
         public FloatReference damage;
-        public FloatReference triggerInterval;
+        //public FloatReference triggerInterval;
 
         [Header("Impact Effects")]
         public GameObject objectToSpawnOnImpact;
@@ -92,7 +92,17 @@ namespace BT.Abilities
 
         private void ActivateLocation()
         {
-            if (bDebug) Debug.Log("Using a utility!");
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+            Collider[] hitColliders = Physics.OverlapSphere(player.transform.position, player.GetComponent<CapsuleCollider>().radius);
+
+            foreach (Collider collider in hitColliders)
+            {
+                if (collider.GetComponent<InteractionObject>() == null) continue;
+
+                collider.GetComponent<InteractionObject>().ActivateObject(elementType);
+            }
+            
         }
     }
 }

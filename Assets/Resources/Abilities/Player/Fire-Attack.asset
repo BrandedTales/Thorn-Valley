@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcc432ff0b61d648be9d8b943bb7f98, type: 3}
+  m_Name: Fire-Attack
+  m_EditorClassIdentifier: 
+  abilityName: Fireball
+  abilityType: 0
+  elementType: 3
+  outputType: 0
+  passiveState: 0
+  stateDuration:
+    useConstant: 1
+    constantValue: 0
+    variable: {fileID: 0}
+  castTime:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: a52640f27c0ae1f478e09c1ab9428480, type: 2}
+  cooldown:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: f689e13d829950c4090582c607edb23d, type: 2}
+  projectilePrefab: {fileID: 6854140130801633934, guid: 924e34c5b2751e941b9d2f7298b5d283,
+    type: 3}
+  offset:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 2132d44201c986648b7cc17ccb0953b0, type: 2}
+  isConnectedToPlayer: 0
+  duration:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 1d55aa6770e12f44e9b92ac87feca5b5, type: 2}
+  speed:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 9aa4aecdd77fe1241a79f53d370f86d2, type: 2}
+  damage:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 7ba46820607d5a94d963c92998902dfc, type: 2}
+  objectToSpawnOnImpact: {fileID: 0}
+  explosionRadius:
+    useConstant: 1
+    constantValue: 0
+    variable: {fileID: 0}
+  isPassThroughEnemies: 0
+  isNeverImpact: 0
+  bDebug: 1

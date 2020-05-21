@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6d71e54b80130c4e9edb73de1af2341, type: 3}
+  m_Name: _RESET_GAME_VALUES
+  m_EditorClassIdentifier: 
+  Description: 'Check this to reset all game values as though
+
+    a new game is
+    starting.'
+  value: 1

@@ -1,4 +1,5 @@
 using System;
+using BT.Events;
 using UnityEngine;
 
 namespace BT.Core
@@ -27,7 +28,7 @@ namespace BT.Core
          *              - Added a check for this state in the PAM Update() function.
          */
 
-        public event Action StateEngaged;
+        [SerializeField] GameEvent stateChange;
 
         private void Awake() 
         {
@@ -43,7 +44,7 @@ namespace BT.Core
         {
             if (bDebug) Debug.Log("Setting state: " + state + " out of " + currentStates.Length);
             currentStates[state] = newState;
-            StateEngaged.Invoke();
+            stateChange.Raise();
         }
 
         public void ClearStates()
