@@ -28,28 +28,35 @@ namespace BT.AI
         [SerializeField] bool hasRandomMovement;
         [Range(0,2)][SerializeField] float minWanderDistance;
         [Range(2,4)][SerializeField] float maxWanderDistance;
-        #endregion 
 
         [Header("Charmed")]
         [SerializeField] bool isCharmed = false;
         //[SerializeField] FloatReference followDistance;  Maybe later.
         [SerializeField] FloatReference charmDuration;
 
+        [Header("Debugging")]
+        [SerializeField] bool bDebug = true;
+        #endregion 
+
+        //Components to instantiate
         Fighter fighter;
         Health health;
         GameObject target;
         Mover mover;
         Vector3 nextWaypoint;
 
-        Vector3 guardPosition;
+
+
+        //Timers
         float timeSinceLastSeenPlayer = Mathf.Infinity;
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
         float timeSinceLastShot = 0;
         float timeSinceCharmed = Mathf.Infinity;
 
+        Vector3 guardPosition;
         int currentWaypointIndex = 0;
 
-        [SerializeField] bool bDebug = true;
+
 
         private void Start() 
         {
@@ -61,15 +68,6 @@ namespace BT.AI
             guardPosition = transform.position;
             nextWaypoint = guardPosition;
 
-        }
-
-        public void BecomeCharmed()
-        {
-            if (bDebug) Debug.Log(gameObject.name + " has become charmed.");
-            timeSinceCharmed = 0;
-            isCharmed = true;
-            target = null;
-            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
         private void Update()
@@ -105,28 +103,6 @@ namespace BT.AI
             UpdateTimers();
         }
 
-        private void CharmedBehavior()
-        {
-            if (target == null)
-            {
-                fighter.CharmFindTarget();
-                if (fighter.GetTarget() != null)
-                    target = fighter.GetTarget().gameObject;
-            }
-            if (timeSinceCharmed >= charmDuration.value)
-            {
-                isCharmed = false;
-                target = GameObject.FindWithTag("Player");
-            }
-        }
-
-        private void FleeBehavior()
-        {
-            Vector3 direction = Vector3.Normalize(transform.position - target.transform.position);
-            if (bDebug) Debug.Log(direction);
-            mover.StartMoveAction(direction + transform.position, 1);
-        }
-
         private void UpdateTimers()
         {
             timeSinceLastSeenPlayer += Time.deltaTime;
@@ -135,6 +111,7 @@ namespace BT.AI
             timeSinceCharmed += Time.deltaTime;
         }
 
+        #region Behaviors
         private void MoveBehavior()
         {
 
@@ -161,6 +138,41 @@ namespace BT.AI
 
         }
 
+        private void SuspicionBehavior()
+        {
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+
+        private void AttackBehavior()
+        {
+            fighter.Attack(target);
+        }
+
+        private void CharmedBehavior()
+        {
+            if (target == null)
+            {
+                fighter.CharmFindTarget();
+                if (fighter.GetTarget() != null)
+                    target = fighter.GetTarget().gameObject;
+            }
+            if (timeSinceCharmed >= charmDuration.value)
+            {
+                isCharmed = false;
+                target = GameObject.FindWithTag("Player");
+            }
+        }
+
+        private void FleeBehavior()
+        {
+            Vector3 direction = Vector3.Normalize(transform.position - target.transform.position);
+            if (bDebug) Debug.Log(direction);
+            mover.StartMoveAction(direction + transform.position, 1);
+        }
+
+        #endregion
+
+        #region WayPoints Methods
         private Vector3 GetCurrentWaypoint()
         {
             if (hasRandomMovement)
@@ -188,15 +200,15 @@ namespace BT.AI
             float distanceToWayPoint = Vector3.Distance(transform.position, GetCurrentWaypoint());
             return distanceToWayPoint < waypointTolerance;
         }
+        #endregion
 
-        private void SuspicionBehavior()
+        public void BecomeCharmed()
         {
+            if (bDebug) Debug.Log(gameObject.name + " has become charmed.");
+            timeSinceCharmed = 0;
+            isCharmed = true;
+            target = null;
             GetComponent<ActionScheduler>().CancelCurrentAction();
-        }
-
-        private void AttackBehavior()
-        {
-            fighter.Attack(target);
         }
 
         private bool InAttackRangeOfTarget(GameObject target)
@@ -206,6 +218,13 @@ namespace BT.AI
             return distanceToTarget < chaseDistance;
         }
 
+        public void Die()
+        {
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+            GetComponent<DropLoot>().Drop(transform);
+            Destroy(gameObject);
+        }
+
         //Called by Unity
         private void OnDrawGizmosSelected()
         {
@@ -213,11 +232,6 @@ namespace BT.AI
             Gizmos.DrawWireSphere(transform.position, chaseDistance);
         }
 
-        public void Die()
-        {
-            GetComponent<ActionScheduler>().CancelCurrentAction();
-            GetComponent<DropLoot>().Drop(transform);
-            Destroy(gameObject);
-        }
+
     }
 }

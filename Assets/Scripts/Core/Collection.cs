@@ -13,13 +13,13 @@ namespace BT.Core
 
         public Dictionary<CollectibleType, bool> itemsInLevel = new Dictionary<CollectibleType, bool>();
 
-        public Dictionary<GameLevels, Dictionary<CollectibleType, bool>> collection = new Dictionary<GameLevels, Dictionary<CollectibleType, bool>>();
+        public Dictionary<GameLevel, Dictionary<CollectibleType, bool>> collection = new Dictionary<GameLevel, Dictionary<CollectibleType, bool>>();
 
         public void Initialize()
         {
             collection.Clear();
             //Cycle through all game levels that have been added.
-            foreach (GameLevels gameLevel in Enum.GetValues(typeof(GameLevels)))
+            foreach (GameLevel gameLevel in Enum.GetValues(typeof(GameLevel)))
             {
 
                 Dictionary<CollectibleType, bool> iterationLevel = new Dictionary<CollectibleType, bool>();
@@ -32,7 +32,7 @@ namespace BT.Core
             }
         }
 
-        public bool GetCollected(GameLevels gameLevel, CollectibleType collectibleType)
+        public bool GetCollected(GameLevel gameLevel, CollectibleType collectibleType)
         {
             Dictionary<CollectibleType, bool> currentLevel;
             
@@ -56,7 +56,7 @@ namespace BT.Core
             }
         }
 
-        public void SetCollect(GameLevels gameLevel, CollectibleType collectibleType, bool newValue)
+        public void SetCollect(GameLevel gameLevel, CollectibleType collectibleType, bool newValue)
         {
             collection[gameLevel][collectibleType] = newValue;
         }

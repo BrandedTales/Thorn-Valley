@@ -11,9 +11,9 @@ namespace BT.Abilities
     {
 
         Ability sourceAbility;
-
         GameObject sourceAttacker;
 
+        [Header("Debugging")]
         [SerializeField] bool bDebug = true;
 
         // Update is called once per frame
@@ -26,11 +26,6 @@ namespace BT.Abilities
 
         }
 
-        private void Move()
-        {
-            transform.Translate(Vector3.forward * sourceAbility.speed * Time.deltaTime);
-        }
-
         public void Initialize(GameObject attacker, Ability ability)
         {
             sourceAttacker = attacker;
@@ -38,6 +33,11 @@ namespace BT.Abilities
 
 
             StartCoroutine(DestroyMe());
+        }
+        
+        private void Move()
+        {
+            transform.Translate(Vector3.forward * sourceAbility.speed * Time.deltaTime);
         }
 
         IEnumerator DestroyMe()
@@ -63,7 +63,7 @@ namespace BT.Abilities
         private void OnTriggerEnter(Collider other) 
         {
 
-            if (bDebug) Debug.Log("Came from: " + sourceAttacker.name + " and the hit: " + other.gameObject.name);
+            //if (bDebug) Debug.Log("Came from: " + sourceAttacker.name + " and the hit: " + other.gameObject.name);
             //First make sure we didn't hit ourselves.
             if (other.gameObject == sourceAttacker.gameObject) return;
             //Check if we are hitting the player, and if the player is invulnerable.

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1970501517687765888
+--- !u!1 &2179283255430565182
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,54 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1970501517687765890}
-  - component: {fileID: 1970501517687765891}
-  - component: {fileID: 2936444831460175570}
+  - component: {fileID: 2179283255430565180}
+  - component: {fileID: 2179283255430565183}
   m_Layer: 0
-  m_Name: BaseAbilityProjectile
+  m_Name: WorldTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1970501517687765890
+--- !u!4 &2179283255430565180
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970501517687765888}
+  m_GameObject: {fileID: 2179283255430565182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.07, z: 0}
+  m_LocalPosition: {x: -1.5575625, y: -2.2314177, z: 5.94086}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1970501517687765891
+--- !u!114 &2179283255430565183
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970501517687765888}
+  m_GameObject: {fileID: 2179283255430565182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f469ad4593ad3a4abd4d955f0b5ceb9, type: 3}
+  m_Script: {fileID: 11500000, guid: 08f7e3e911f94964bafe61ae32d0a513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bDebug: 0
---- !u!136 &2936444831460175570
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970501517687765888}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 0.6
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  resetGameData: {fileID: 11400000, guid: 878a028c67c15b24899ca70fe8b1aa78, type: 2}
+  collections:
+  - {fileID: 11400000, guid: a6df59b274a54db46b9aac5276c85457, type: 2}
+  gugCount: {fileID: 11400000, guid: c6004f0ab8b25294e99b008d0fea592f, type: 2}
+  gameLevel: 1

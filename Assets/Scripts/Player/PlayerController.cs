@@ -12,6 +12,9 @@ namespace BT.Player
     public class PlayerController : MonoBehaviour, ICharacter
     {
 
+        [SerializeField] BoolVariable resetGameData;
+        
+        [Header("Abilities")]
         public PlayerRunTimeData prtd;
 
         [Header("State Details")]
@@ -34,10 +37,6 @@ namespace BT.Player
 
 
         bool isGamePaused;
-
-        public event Action Interaction;
-
-        [SerializeField] BoolVariable resetGameData;
 
         private void Start() 
         {
@@ -120,10 +119,28 @@ namespace BT.Player
 
             if (Input.GetButtonDown("Fire3"))
             {
-                Interaction.Invoke();
+                ActivateLocation();
             }
 
             UpdateTimers();
+
+        }
+
+        private void ActivateLocation()
+        {
+            CharacterController cc = GetComponent<CharacterController>();
+            if (cc == null) return;
+
+
+            Collider[] colliders = Physics.OverlapSphere(transform.position, cc.radius);
+
+            foreach (Collider collider in colliders)
+            {
+                if (collider.GetComponent<InteractionObject>() == null) continue;
+                if (bDebug) Debug.Log("Activating Location: " + collider.gameObject.name + " with key " + prtd.utilityAbility.elementType);
+                collider.GetComponent<InteractionObject>().ActivateObject(prtd.utilityAbility.elementType);
+
+            }
 
         }
 

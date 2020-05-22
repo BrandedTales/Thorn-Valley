@@ -26,9 +26,7 @@ namespace BT.World
             {
                 isEnabled.SetValue(objectToEnable.activeSelf);
             }
-
         }
-
 
         public override void Activate()
         {

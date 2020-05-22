@@ -9,7 +9,7 @@ namespace BT.Abilities
     {
 
         [SerializeField] ElementType elementType;
-
+        
         InteractBehavior interactBehavior;
 
 

@@ -165,7 +165,7 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: 5787fcac02a7df048b4a042383d9295d, type: 2}
-  bDebug: 1
+  bDebug: 0
 --- !u!114 &5027946413399982717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
     useConstant: 1
     constantValue: 0
     variable: {fileID: 0}
-  bDebug: 1
+  bDebug: 0
 --- !u!114 &5027946413399982712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598d7f9345bd4f34f9ea8d3f74635abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bDebug: 1
+  bDebug: 0
 --- !u!195 &893673696
 NavMeshAgent:
   m_ObjectHideFlags: 0

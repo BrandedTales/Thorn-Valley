@@ -29,9 +29,6 @@ namespace BT.Core
         bool isDead = false;
 
         ICharacter character;
-
-
-
         States myStates;
 
         [Header("Debugging")]
@@ -60,6 +57,43 @@ namespace BT.Core
 
         }
 
+        #region Accessors
+        public float GetMaxHealth()
+        {
+            return isPlayer ? playerMaxHealth.value : enemyMaxHealth;
+        }
+
+        public float GetCurrentHealth()
+        {
+
+            return isPlayer ? playerCurrentHealth.value : enemyCurrentHealth;
+        }
+
+        public float GetHealthPercentage()
+        {
+            return 100 * (GetCurrentHealth() / GetMaxHealth());
+        }
+
+        public bool IsDead()
+        {
+            return isDead;
+        }
+        #endregion
+
+        #region Modifiers
+        public void RecoverHealth(float heal)
+        {
+            if (isPlayer)
+            {
+                playerCurrentHealth.variable.ApplyChange(heal);
+                playerCurrentHealth.variable.SetValue(Mathf.Clamp(playerCurrentHealth.value, 0, playerMaxHealth.value));
+                playerHealthChange.Raise();
+            }
+            else
+            {
+                enemyCurrentHealth = Mathf.Clamp(enemyCurrentHealth + heal, 0, enemyMaxHealth);
+            }
+        }
         public float RegenHealth(float timer)
         {
             if (timer >= regenTickAmount.value)
@@ -71,17 +105,6 @@ namespace BT.Core
             {
                 return timer;
             }
-        }
-
-        public float GetMaxHealth()
-        {
-            return isPlayer ? playerMaxHealth.value : enemyMaxHealth;
-        }
-
-        public float GetCurrentHealth()
-        {
-
-            return isPlayer ? playerCurrentHealth.value : enemyCurrentHealth;
         }
 
         public void TakeDamage(float damage)
@@ -101,36 +124,6 @@ namespace BT.Core
                 Die();
             }
         }
-
-        public void RecoverHealth(float heal)
-        {
-            if (isPlayer)
-            {
-                playerCurrentHealth.variable.ApplyChange(heal);
-                playerCurrentHealth.variable.SetValue(Mathf.Clamp(playerCurrentHealth.value, 0, playerMaxHealth.value));
-                playerHealthChange.Raise();
-            }
-            else
-            {
-                enemyCurrentHealth = Mathf.Clamp(enemyCurrentHealth + heal, 0, enemyMaxHealth);
-            }
-        }
-
-        public float GetHealthPercentage()
-        {
-            return 100 * (GetCurrentHealth() / GetMaxHealth());
-        }
-
-        private void Die()
-        {
-            character.Die();
-        }
-
-        public bool IsDead()
-        {
-            return isDead;
-        }
-
         public void IncreaseMaxHealth(float increaseAmount, float refillPercent)
         {
             playerMaxHealth.variable.SetValue(increaseAmount);
@@ -142,5 +135,13 @@ namespace BT.Core
             playerHealthChange.Raise();
 
         }
+        #endregion
+
+        
+        private void Die()
+        {
+            character.Die();
+        }
+
     }
 }

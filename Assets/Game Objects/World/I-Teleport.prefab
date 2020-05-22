@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portalKey: 0
-  sceneIndex: -1
+  sceneIndex: 0
   spawnPoint: {fileID: 3991000195215081766}
   objectToTeleport: {fileID: 0}
   fadeOutTime:
@@ -28,7 +28,8 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: aa2e7c70f5cd7c047bdf35b91b3cb829, type: 2}
-  bDebug: 1
+  bDebug: 0
+  sceneChanged: {fileID: 11400000, guid: fa1d6d840f803504cad9866ce34fa7ef, type: 2}
 --- !u!1 &7166757864437376996
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,10 +72,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: I-Teleport
       objectReference: {fileID: 0}
+    - target: {fileID: 1021083641968364394, guid: a87904e238fe0c643a164b15aa9defca,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 1021083641968364405, guid: a87904e238fe0c643a164b15aa9defca,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.05
       objectReference: {fileID: 0}
     - target: {fileID: 1021083641968364405, guid: a87904e238fe0c643a164b15aa9defca,
         type: 3}
@@ -84,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 1021083641968364405, guid: a87904e238fe0c643a164b15aa9defca,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 8.88
       objectReference: {fileID: 0}
     - target: {fileID: 1021083641968364405, guid: a87904e238fe0c643a164b15aa9defca,
         type: 3}

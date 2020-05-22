@@ -9,7 +9,9 @@ namespace BT.Core
     public class States : MonoBehaviour
     {
         public bool[] currentStates;
+        [SerializeField] GameEvent stateChange;
 
+        [Header("Debugging")]
         [SerializeField] bool bDebug = false;
 
         /* Notes on States
@@ -28,7 +30,7 @@ namespace BT.Core
          *              - Added a check for this state in the PAM Update() function.
          */
 
-        [SerializeField] GameEvent stateChange;
+
 
         private void Awake() 
         {

@@ -3,6 +3,7 @@ using BT.Variables;
 using System;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using BT.Events;
 
 namespace BT.World
 {
@@ -23,6 +24,8 @@ namespace BT.World
 
         [Header("Debugging")]
         [SerializeField] bool bDebug = true;
+
+        public GameEvent sceneChanged;
 
         public override void Activate()
         {
@@ -67,7 +70,7 @@ namespace BT.World
 
             yield return fader.FadeOut(fadeOutTime);
             yield return SceneManager.LoadSceneAsync(sceneIndex);
-
+            sceneChanged.Raise();
             Teleport(true);
 
             yield return new WaitForSeconds(fadeWaitTime);

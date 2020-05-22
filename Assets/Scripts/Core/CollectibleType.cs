@@ -8,6 +8,7 @@ namespace BT.Core
     [CreateAssetMenu(fileName = "New Collectible Type", menuName = "Thorn Valley/New Collectible Type", order = 0)]
     public class CollectibleType : ScriptableObject
     {
-        
+        public Sprite collectedImage;
+        public Sprite uncollectedImage;
     }
 }

@@ -4,7 +4,7 @@ using BT.Abilities;
 
 namespace BT.Player
 {
-    [CreateAssetMenu(fileName = "New PlayerRunTimeData", menuName = "Thorn Valley/New PlayerRunTimeData", order = 0)]
+    [CreateAssetMenu(fileName = "New PlayerRunTimeData", menuName = "Thorn Valley/Create PlayerRunTimeData", order = 0)]
     public class PlayerRunTimeData : ScriptableObject
     {
         [Header("Abilities")]

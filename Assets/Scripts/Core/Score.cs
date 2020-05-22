@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using BT.Variables;
 using UnityEngine;
+using BT.Events;
 
 namespace BT.Core
 {
-    public enum GameLevels { Overworld, Dungeon1 }
+    public enum GameLevel { Overworld, Dungeon1 }
 
     public class Score : MonoBehaviour
     {
 
         [SerializeField] BoolVariable resetGameData;
-        [SerializeField] Collection[] collections;
+        public Collection[] collections;
 
         public FloatVariable gugCount;
+        public GameLevel gameLevel;
 
         // Start is called before the first frame update
         void Start()
@@ -27,8 +29,6 @@ namespace BT.Core
                 gugCount.SetValue(0);
             }
         }
-
-
 
         public void AddGugs(float gugToAdd)
         {

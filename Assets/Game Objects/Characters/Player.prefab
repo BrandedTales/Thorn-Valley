@@ -1005,7 +1005,7 @@ MonoBehaviour:
     constantValue: 5
     variable: {fileID: 0}
   lightSource: {fileID: 8320276741771635095}
-  bDebug: 1
+  bDebug: 0
   resetGameData: {fileID: 11400000, guid: 878a028c67c15b24899ca70fe8b1aa78, type: 2}
 --- !u!114 &100964320
 MonoBehaviour:
@@ -1027,6 +1027,7 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: 5b018a0d141a8834a9e31dd4c073e7a9, type: 2}
+  playerHealthChange: {fileID: 11400000, guid: cae2ddf7cc403394595800ed081ef102, type: 2}
   enemyCurrentHealth: 0
   enemyMaxHealth: 0
   resetGameData: {fileID: 11400000, guid: 878a028c67c15b24899ca70fe8b1aa78, type: 2}
@@ -1039,7 +1040,7 @@ MonoBehaviour:
     useConstant: 1
     constantValue: 0
     variable: {fileID: 0}
-  bDebug: 1
+  bDebug: 0
 --- !u!114 &3527123490656523563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,6 +1055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStates: 
   bDebug: 0
+  stateChange: {fileID: 11400000, guid: db105e8ad255f9e4087977d627cba3b5, type: 2}
 --- !u!114 &100964319
 MonoBehaviour:
   m_ObjectHideFlags: 0
