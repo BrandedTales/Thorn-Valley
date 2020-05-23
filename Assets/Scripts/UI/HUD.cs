@@ -7,7 +7,7 @@ namespace BT.UI
 {
     public class HUD : MonoBehaviour
     {
-        // Start is called before the first frame update
+        //Start is called before the first frame update
         void Awake()
         {
             int objCount = FindObjectsOfType<HUD>().Length;

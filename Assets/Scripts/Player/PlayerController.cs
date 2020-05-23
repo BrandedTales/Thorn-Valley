@@ -53,6 +53,7 @@ namespace BT.Player
 
         private void Start() 
         {
+            if (bDebug) Debug.Log("Player spawned.");
             pc = GetComponent<PlayerCharacter>();
             if (pc == null)
                 Debug.LogError("No locomotion object on player.");
@@ -62,21 +63,10 @@ namespace BT.Player
 
             health = GetComponent<Health>();
 
+            if (prtd.passiveAbility != null)
+                prtd.passiveAbility.EngageState(true);
+
         }
-
-        private void PurgePlayerContent()
-        {
-            prtd.attackAbility = null;
-            prtd.defenseAbility = null;
-            prtd.utilityAbility = null;
-            prtd.passiveAbility = null;
-
-            myStates.ClearStates();
-
-            prtd.activeWand = null;
-        }
-
-
 
         // Update is called once per frame
         void Update()
@@ -101,10 +91,67 @@ namespace BT.Player
                 ActivateLocation();
             }
 
+
             UpdateTimers();
 
         }
 
+        private void UpdateTimers()
+        {
+            attackTimer += Time.deltaTime;
+            defenseTimer += Time.deltaTime;
+            utilityTimer += Time.deltaTime;
+            regenTimer += Time.deltaTime;
+        }
+
+        private void PurgePlayerContent()
+        {
+            prtd.attackAbility = null;
+            prtd.defenseAbility = null;
+            prtd.utilityAbility = null;
+            prtd.passiveAbility = null;
+
+            myStates.ClearStates();
+
+            prtd.activeWand = null;
+        }
+        
+        #region Event Actions
+        public void lockPlayerInput()
+        {
+            isGamePaused = true;
+            pc.characterLocomotion.SetIsControllable(false);
+        }
+
+        public void unlockPlayerInput()
+        {
+            isGamePaused = false;
+            pc.characterLocomotion.SetIsControllable(true);
+        }
+
+        public void UpdateJump()
+        {
+            if (bDebug) Debug.Log("Jump event called.");
+            if (myStates.GetState((int)PlayerPassive.Jump))
+            {
+                pc.characterLocomotion.jumpForce = superJump.value;
+            }
+            else
+            {
+                pc.characterLocomotion.jumpForce = defaultJump;
+            }
+        }
+
+        public void UpdateLight()
+        {
+            if (bDebug) Debug.Log("Light event called.");
+            lightSource.SetActive(myStates.GetState((int)PlayerPassive.Light));
+
+        }
+
+        #endregion
+        
+        #region Activation Abilities
         private void ActivateLocation()
         {
             CharacterController cc = GetComponent<CharacterController>();
@@ -128,14 +175,6 @@ namespace BT.Player
 
             }
 
-        }
-
-        private void UpdateTimers()
-        {
-            attackTimer += Time.deltaTime;
-            defenseTimer += Time.deltaTime;
-            utilityTimer += Time.deltaTime;
-            regenTimer += Time.deltaTime;
         }
 
         private void DefenseHandler()
@@ -183,6 +222,8 @@ namespace BT.Player
 
             }
         }
+
+        #endregion
 
 
 

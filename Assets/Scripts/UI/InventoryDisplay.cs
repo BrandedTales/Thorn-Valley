@@ -12,7 +12,7 @@ namespace BT.UI
     {
         public HorizontalLayoutGroup wandPanel;
         public GameObject inventoryPanel;
-        public Button wandButton;
+        public WandButton wandButton;
 
         public Inventory inventory;
 
@@ -50,9 +50,11 @@ namespace BT.UI
             }
             foreach (Wand wand in inventory.wands)
             {
-                var button = Instantiate(wandButton);
+                WandButton button = Instantiate(wandButton);
+                button.name = wand.name;
                 button.transform.parent = wandPanel.transform;
                 button.GetComponent<Image>().sprite = wand.wandIcon;
+                button.wand = wand;
 
             }
         }

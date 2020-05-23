@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3296421130574228955}
   - component: {fileID: 5260847928943432141}
   - component: {fileID: 2450760656240079227}
+  - component: {fileID: -5397816636218056333}
   m_Layer: 5
   m_Name: WandButton
   m_TagString: Untagged
@@ -117,14 +118,28 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: -5397816636218056333}
+        m_MethodName: EquipWand
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-5397816636218056333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4940122205818852692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75f5814d21cecd0438f99cc6aaedf24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wand: {fileID: 0}
+  prtd: {fileID: 11400000, guid: 29769b2f620efe542b037e7bd59b6c17, type: 2}

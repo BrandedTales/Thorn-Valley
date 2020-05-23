@@ -14,6 +14,8 @@ namespace BT.Items
 
         public void PurgeWands()
         {
+            if (wands == null) return;
+            
             wands.Clear();
         }
 

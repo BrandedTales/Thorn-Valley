@@ -70,10 +70,11 @@ namespace BT.World
 
             yield return fader.FadeOut(fadeOutTime);
             yield return SceneManager.LoadSceneAsync(sceneIndex);
-            sceneChanged.Raise();
+
             Teleport(true);
 
             yield return new WaitForSeconds(fadeWaitTime);
+            sceneChanged.Raise();
             yield return fader.FadeIn(fadeInTime);
 
             if (bDebug) Debug.Log("Faded into new Scene.  Getting ready to destroy.");

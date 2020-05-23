@@ -813,6 +813,7 @@ GameObject:
   - component: {fileID: 100964322}
   - component: {fileID: 100964321}
   - component: {fileID: 418534370}
+  - component: {fileID: 894452890}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -852,7 +853,7 @@ MonoBehaviour:
   characterLocomotion:
     isControllable: 1
     isBusy: 0
-    runSpeed: 4
+    runSpeed: 5
     angularSpeed: 540
     gravity: -9.81
     maxFallSpeed: -100
@@ -1001,12 +1002,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetGameData: {fileID: 11400000, guid: 878a028c67c15b24899ca70fe8b1aa78, type: 2}
   prtd: {fileID: 11400000, guid: 29769b2f620efe542b037e7bd59b6c17, type: 2}
+  inventory: {fileID: 11400000, guid: caab094759903f2428395f503fbdbf7d, type: 2}
   superJump:
     useConstant: 1
     constantValue: 5
     variable: {fileID: 0}
   lightSource: {fileID: 8320276741771635095}
-  bDebug: 0
+  bDebug: 1
 --- !u!114 &100964320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1135,6 +1137,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Event: {fileID: 11400000, guid: db105e8ad255f9e4087977d627cba3b5, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8320276741643111964}
+        m_MethodName: UpdateJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8320276741643111964}
+        m_MethodName: UpdateLight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &894452890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8320276741643111974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f725a627e140cd249b1ac3349ff276ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: fa1d6d840f803504cad9866ce34fa7ef, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
