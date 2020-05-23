@@ -34,7 +34,7 @@ namespace BT.Core
         [Header("Debugging")]
         [SerializeField] bool bDebug = true;
 
-        private void Start()
+        private void Awake()
         {
             character = GetComponent<ICharacter>();
 

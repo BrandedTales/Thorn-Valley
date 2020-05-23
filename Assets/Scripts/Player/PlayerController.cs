@@ -6,6 +6,7 @@ using BT.Core;
 using UnityEngine;
 using GameCreator.Characters;
 using BT.Abilities;
+using BT.Items;
 
 namespace BT.Player
 {
@@ -16,6 +17,7 @@ namespace BT.Player
         
         [Header("Abilities")]
         public PlayerRunTimeData prtd;
+        public Inventory inventory;
 
         [Header("State Details")]
         public FloatReference superJump;
@@ -38,6 +40,17 @@ namespace BT.Player
 
         bool isGamePaused;
 
+        private void Awake() 
+        {
+            myStates = FindObjectOfType<States>();
+            if (resetGameData.value)
+            {
+                inventory.PurgeWands();
+                PurgePlayerContent();
+            }
+
+        }
+
         private void Start() 
         {
             pc = GetComponent<PlayerCharacter>();
@@ -45,59 +58,25 @@ namespace BT.Player
                 Debug.LogError("No locomotion object on player.");
             defaultJump = pc.characterLocomotion.jumpForce;
 
-            myStates = FindObjectOfType<States>();
             health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
 
             health = GetComponent<Health>();
 
-            //Test Code until Wands have been created.
-            EquipPassive();
         }
 
-        #region Methods from Event Calls
-        public void UpdateJump()
+        private void PurgePlayerContent()
         {
-            if (bDebug) Debug.Log("Jump event called.");
-            if (myStates.GetState((int)PlayerPassive.Jump))
-            {
-                pc.characterLocomotion.jumpForce = superJump.value;
-            }
-            else
-            {
-                pc.characterLocomotion.jumpForce = defaultJump;
-            }
+            prtd.attackAbility = null;
+            prtd.defenseAbility = null;
+            prtd.utilityAbility = null;
+            prtd.passiveAbility = null;
+
+            myStates.ClearStates();
+
+            prtd.activeWand = null;
         }
 
-        public void UpdateLight()
-        {
-            if (bDebug) Debug.Log("Light event called.");
-            lightSource.SetActive(myStates.GetState((int)PlayerPassive.Light));
 
-
-        }
-
-        public void lockPlayerInput()
-        {
-            isGamePaused = true;
-            pc.characterLocomotion.SetIsControllable(false);
-        }
-
-        public void unlockPlayerInput()
-        {
-            isGamePaused = false;
-            pc.characterLocomotion.SetIsControllable(true);
-        }
-
-        #endregion
-
-        #region Test Code Methods to validate functionality.
-        private void EquipPassive()
-        {
-            if (prtd.passiveAbility == null) return;
-            prtd.passiveAbility.EngageState();
-        }
-
-        #endregion
 
         // Update is called once per frame
         void Update()
@@ -138,7 +117,14 @@ namespace BT.Player
             {
                 if (collider.GetComponent<InteractionObject>() == null) continue;
                 if (bDebug) Debug.Log("Activating Location: " + collider.gameObject.name + " with key " + prtd.utilityAbility.elementType);
-                collider.GetComponent<InteractionObject>().ActivateObject(prtd.utilityAbility.elementType);
+
+                ElementType param;;
+                if (prtd.utilityAbility==null)
+                    param = ElementType.None;
+                else
+                    param = prtd.utilityAbility.elementType;
+                    
+                collider.GetComponent<InteractionObject>().ActivateObject(param);
 
             }
 
@@ -154,6 +140,8 @@ namespace BT.Player
 
         private void DefenseHandler()
         {
+            if (prtd.defenseAbility == null) return;
+
             if (defenseTimer > prtd.defenseAbility.cooldown.value)
             {
                 StartCoroutine(CastAbility(prtd.defenseAbility));
@@ -167,6 +155,8 @@ namespace BT.Player
 
         private void AttackHandler()
         {
+            if (prtd.attackAbility == null) return;
+
             if (attackTimer > prtd.attackAbility.cooldown.value)
             {
                 StartCoroutine(CastAbility(prtd.attackAbility));
@@ -200,6 +190,9 @@ namespace BT.Player
 
         private void OnDrawGizmosSelected()
         {
+
+            if ((prtd.attackAbility == null)||(prtd.defenseAbility == null)) return;
+
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, prtd.attackAbility.explosionRadius.value);
             Gizmos.color = Color.blue;

@@ -63,7 +63,7 @@ namespace BT.World
         }
 
         private IEnumerator TeleportNewScene()
-        {
+        { 
             DontDestroyOnLoad(gameObject);
 
             Fader fader = FindObjectOfType<Fader>();

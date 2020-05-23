@@ -62,12 +62,12 @@ namespace BT.Abilities
 
         }
 
-        public void EngageState()
+        public void EngageState(bool clearStates)
         {
             States playerStates = GameObject.FindWithTag("Player").GetComponent<States>();
             if (playerStates != null)
             {
-                //playerStates.ClearStates();
+                if (clearStates) playerStates.ClearStates();
                 playerStates.SetState((int)passiveState, true);
             }
         }

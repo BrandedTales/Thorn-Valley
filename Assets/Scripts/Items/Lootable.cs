@@ -13,7 +13,7 @@ namespace BT.Items
 
         [Header("General Details")]
         [SerializeField] string objectName;
-        [SerializeField] GameObject lootableObject;
+        public GameObject lootableObject;
 
         [Header("Item Bob")]
         [SerializeField] bool isBobbing = false;

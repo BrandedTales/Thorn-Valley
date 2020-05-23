@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed0b9c65b253df1478657080bcb28f6d, type: 3}
-  m_Name: PlayerRuntimeAbilities
+  m_Script: {fileID: 11500000, guid: 0e788e3e16e255043b058764c7fc5fc0, type: 3}
+  m_Name: FireWand
   m_EditorClassIdentifier: 
+  wandName: Fire Wand!
+  wandPrefab: {fileID: 8436130736917322966, guid: e65536a90ae81464cbdf047b0fadf41a,
+    type: 3}
+  wandIcon: {fileID: 21300000, guid: 000d5d864d80548469a1ffb02dd0b77d, type: 3}
   attackAbility: {fileID: 11400000, guid: eef6b9df95da5a44dad3caa3b44df803, type: 2}
   defenseAbility: {fileID: 11400000, guid: 3d216e2346d01b34bb5a02af69db9eb7, type: 2}
   utilityAbility: {fileID: 11400000, guid: a82a7105ae34bc64daeb56cac1cc790d, type: 2}

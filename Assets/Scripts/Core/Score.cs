@@ -12,21 +12,31 @@ namespace BT.Core
     {
 
         [SerializeField] BoolVariable resetGameData;
+        [SerializeField] BoolVariable resetOnlyOnNew;
         public Collection[] collections;
 
         public FloatVariable gugCount;
         public GameLevel gameLevel;
 
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
-            if (resetGameData)
+            if (resetGameData.value==true)
             {
                 for (int i = 0; i < collections.Length;i++)
                 {
                     collections[i].Initialize();
                 }
                 gugCount.SetValue(0);
+            }
+
+
+        }
+
+        private void Start() {
+            if (resetOnlyOnNew)
+            {
+                resetGameData.SetValue(false);
             }
         }
 

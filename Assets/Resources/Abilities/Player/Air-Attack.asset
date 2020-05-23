@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fcc432ff0b61d648be9d8b943bb7f98, type: 3}
-  m_Name: Fire-Attack
+  m_Name: Air-Attack
   m_EditorClassIdentifier: 
-  abilityName: Fireball
+  abilityName: Lightning Bolt
   abilityType: 0
-  elementType: 3
+  elementType: 1
   outputType: 0
   passiveState: 0
   stateDuration:
     useConstant: 1
     constantValue: 0
-    variable: {fileID: 11400000, guid: 1d55aa6770e12f44e9b92ac87feca5b5, type: 2}
+    variable: {fileID: 0}
   castTime:
     useConstant: 0
     constantValue: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: f689e13d829950c4090582c607edb23d, type: 2}
-  projectilePrefab: {fileID: 6854140130801633934, guid: 924e34c5b2751e941b9d2f7298b5d283,
+  projectilePrefab: {fileID: 4280566111797393924, guid: 93deb344bc375b64a95fef4b334ac1f6,
     type: 3}
   offset:
     useConstant: 0
@@ -53,6 +53,6 @@ MonoBehaviour:
     useConstant: 1
     constantValue: 0
     variable: {fileID: 0}
-  isPassThroughEnemies: 0
+  isPassThroughEnemies: 1
   isNeverImpact: 0
   bDebug: 1

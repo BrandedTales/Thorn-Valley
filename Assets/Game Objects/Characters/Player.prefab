@@ -999,14 +999,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 840741fe6fe8b9f4ba2ee42d608785fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prtd: {fileID: 11400000, guid: 0d02df8f6e67d494ba18fea47bc1ad08, type: 2}
+  resetGameData: {fileID: 11400000, guid: 878a028c67c15b24899ca70fe8b1aa78, type: 2}
+  prtd: {fileID: 11400000, guid: 29769b2f620efe542b037e7bd59b6c17, type: 2}
   superJump:
     useConstant: 1
     constantValue: 5
     variable: {fileID: 0}
   lightSource: {fileID: 8320276741771635095}
   bDebug: 0
-  resetGameData: {fileID: 11400000, guid: 878a028c67c15b24899ca70fe8b1aa78, type: 2}
 --- !u!114 &100964320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,8 +1054,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentStates: 
-  bDebug: 0
   stateChange: {fileID: 11400000, guid: db105e8ad255f9e4087977d627cba3b5, type: 2}
+  bDebug: 0
 --- !u!114 &100964319
 MonoBehaviour:
   m_ObjectHideFlags: 0
