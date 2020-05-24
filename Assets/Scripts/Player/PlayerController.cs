@@ -12,8 +12,6 @@ namespace BT.Player
 {
     public class PlayerController : MonoBehaviour, ICharacter
     {
-
-        [SerializeField] BoolVariable resetGameData;
         
         [Header("Abilities")]
         public PlayerRunTimeData prtd;
@@ -40,17 +38,6 @@ namespace BT.Player
 
         bool isGamePaused;
 
-        private void Awake() 
-        {
-            myStates = FindObjectOfType<States>();
-            if (resetGameData.value)
-            {
-                inventory.PurgeWands();
-                PurgePlayerContent();
-            }
-
-        }
-
         private void Start() 
         {
             if (bDebug) Debug.Log("Player spawned.");
@@ -59,8 +46,7 @@ namespace BT.Player
                 Debug.LogError("No locomotion object on player.");
             defaultJump = pc.characterLocomotion.jumpForce;
 
-            health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
-
+            myStates = FindObjectOfType<States>();
             health = GetComponent<Health>();
 
             if (prtd.passiveAbility != null)
@@ -163,7 +149,7 @@ namespace BT.Player
             foreach (Collider collider in colliders)
             {
                 if (collider.GetComponent<InteractionObject>() == null) continue;
-                if (bDebug) Debug.Log("Activating Location: " + collider.gameObject.name + " with key " + prtd.utilityAbility.elementType);
+                if (bDebug) Debug.Log("Activating Location: " + collider.gameObject.name);
 
                 ElementType param;;
                 if (prtd.utilityAbility==null)

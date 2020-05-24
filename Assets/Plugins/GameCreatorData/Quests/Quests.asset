@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7425115302024726812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205ff9d50c90949b98056d0039dff7c6, type: 3}
+  m_Name: 74357384f8ba4404a1d0c454f8c6799f
+  m_EditorClassIdentifier: 
+  title:
+    content: Collect The Wands
+    postProcess: 0
+    translationID: 0
+  description:
+    content: Collect both wands and return.
+    postProcess: 0
+    translationID: 0
+  sprite: {fileID: 0}
+  uniqueID: 74357384f8ba4404a1d0c454f8c6799f
+  internalName: collect-the-wands
+  status: 0
+  isHidden: 0
+  canBeAbandoned: 0
+  children:
+  - {fileID: 8307481836079110598}
+  - {fileID: 9097256271124071873}
+  parent: {fileID: 11400000}
+  reactions: {fileID: 6173851575341299456, guid: c03ae84d94ba6f54fbd6809d3afcaf5a,
+    type: 3}
+  type: 0
+  progress: 0
+  progressMaxValue: 1
+  isTracking: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d072b01d4c1747fca7b96f6a53ad25c, type: 3}
+  m_Name: Quests
+  m_EditorClassIdentifier: 
+  title:
+    content: 
+    postProcess: 0
+    translationID: 0
+  description:
+    content: 
+    postProcess: 0
+    translationID: 0
+  sprite: {fileID: 0}
+  uniqueID: 
+  internalName: 
+  status: 0
+  isHidden: 0
+  canBeAbandoned: 0
+  children:
+  - {fileID: -7425115302024726812}
+  parent: {fileID: 0}
+  reactions: {fileID: 0}
+  type: 0
+  progress: 0
+  progressMaxValue: 1
+--- !u!114 &8307481836079110598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de36ba328c44a4946805b50fa61d24b1, type: 3}
+  m_Name: ccdc24e5aa3841838aac12158c19ac8e
+  m_EditorClassIdentifier: 
+  title:
+    content: Collect the Air Wand
+    postProcess: 0
+    translationID: 0
+  description:
+    content: Find the air wand and get that bad boy!
+    postProcess: 0
+    translationID: 0
+  sprite: {fileID: 0}
+  uniqueID: ccdc24e5aa3841838aac12158c19ac8e
+  internalName: collect-the-air-wand
+  status: 0
+  isHidden: 0
+  canBeAbandoned: 0
+  children: []
+  parent: {fileID: -7425115302024726812}
+  reactions: {fileID: 5656444464111283801, guid: 02fb0e46db35bed4dbcc8b0dc36f8e4c,
+    type: 3}
+  type: 0
+  progress: 0
+  progressMaxValue: 1
+--- !u!114 &9097256271124071873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de36ba328c44a4946805b50fa61d24b1, type: 3}
+  m_Name: b3858f7597334d438bb7244b6803ad67
+  m_EditorClassIdentifier: 
+  title:
+    content: Collect the Fire Wand
+    postProcess: 0
+    translationID: 0
+  description:
+    content: Now get out there and get that fire wand, hey?
+    postProcess: 0
+    translationID: 0
+  sprite: {fileID: 0}
+  uniqueID: b3858f7597334d438bb7244b6803ad67
+  internalName: collect-the-fire-wand
+  status: 0
+  isHidden: 0
+  canBeAbandoned: 0
+  children: []
+  parent: {fileID: -7425115302024726812}
+  reactions: {fileID: 1440173653711945833, guid: c2927d56fb7d3104095a6843eb52121e,
+    type: 3}
+  type: 0
+  progress: 0
+  progressMaxValue: 1

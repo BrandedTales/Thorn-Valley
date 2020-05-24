@@ -31,5 +31,15 @@ namespace BT.Core
             passiveAbility.EngageState(true);
         }
 
+        public void Purge()
+        {
+            attackAbility = null;
+            defenseAbility = null;
+            utilityAbility = null;
+            passiveAbility = null;
+
+            activeWand = null;
+        }
+
     }
 }

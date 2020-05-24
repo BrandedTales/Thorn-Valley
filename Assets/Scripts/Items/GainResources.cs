@@ -40,6 +40,7 @@ namespace BT.Items
             }
             else if (collectibleType != null)
             {
+                GetComponent<Lootable>().isUniqueAndCollected.SetValue(true);
                 collection.SetCollect(score.gameLevel, collectibleType, true);
                 if (bDebug)
                 {

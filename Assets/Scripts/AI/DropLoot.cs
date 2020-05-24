@@ -12,6 +12,8 @@ namespace BT.AI
         [SerializeField] DropContents dropContents;
         [SerializeField] float spawnLootHeightOffset = 1.0f;
 
+        [Header("Debugging")]
+        [SerializeField] bool bDebug = true;
 
         public void Drop(Transform spawnLocation)
         {
@@ -29,6 +31,7 @@ namespace BT.AI
         private void SpawnLoot(Lootable item, Transform spawnLocation)
         {
             Instantiate(item, spawnLocation.position + new Vector3(0,spawnLootHeightOffset, 0), spawnLocation.rotation);
+            if (bDebug) Debug.Log("Spawned loot at " + (spawnLocation.position + new Vector3(0, spawnLootHeightOffset, 0)));
         }
     }
 }

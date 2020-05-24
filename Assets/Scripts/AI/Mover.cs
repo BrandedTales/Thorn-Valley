@@ -32,6 +32,8 @@ namespace BT.AI
             navMeshAgent.enabled = !health.IsDead();
             if (IsEntangled()) Cancel();
 
+            if (bDebug) Debug.Log("Enemy current at: " + transform.position);
+
             UpdateAnimator();
         }
 

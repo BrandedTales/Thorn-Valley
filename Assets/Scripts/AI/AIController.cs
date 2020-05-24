@@ -220,8 +220,9 @@ namespace BT.AI
 
         public void Die()
         {
-            GetComponent<ActionScheduler>().CancelCurrentAction();
+            if (bDebug) Debug.Log(gameObject.name + " died at location: " + transform.position + " at " + Vector3.Distance(target.transform.position, transform.position));
             GetComponent<DropLoot>().Drop(transform);
+            GetComponent<ActionScheduler>().CancelCurrentAction();
             Destroy(gameObject);
         }
 

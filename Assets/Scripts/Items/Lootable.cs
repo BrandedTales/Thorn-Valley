@@ -14,6 +14,7 @@ namespace BT.Items
         [Header("General Details")]
         [SerializeField] string objectName;
         public GameObject lootableObject;
+        public BoolVariable isUniqueAndCollected;
 
         [Header("Item Bob")]
         [SerializeField] bool isBobbing = false;
@@ -35,6 +36,10 @@ namespace BT.Items
         // Start is called before the first frame update
         void Start()
         {
+            if ((isUniqueAndCollected != null) && (isUniqueAndCollected.value==true))
+            {
+                Destroy(gameObject);
+            }
             lootableBehavior = GetComponent<LootableBehavior>();
 
             if (destroyTimer.value > 0)

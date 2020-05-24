@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &164389044905388484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4261457009076194126}
+  - component: {fileID: 1236238603892349085}
+  m_Layer: 0
+  m_Name: Initializer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4261457009076194126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164389044905388484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1236238603892349085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164389044905388484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35bc3b53ab4a3d045888519834e974b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetGameData: {fileID: 11400000, guid: 878a028c67c15b24899ca70fe8b1aa78, type: 2}
+  collections:
+  - {fileID: 11400000, guid: a6df59b274a54db46b9aac5276c85457, type: 2}
+  inventory: {fileID: 0}
+  gugAmount:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: c6004f0ab8b25294e99b008d0fea592f, type: 2}
+  playerCurrentHealth:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 5b018a0d141a8834a9e31dd4c073e7a9, type: 2}
+  playerMaxHealth:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 2fddecb354daf5f4c86a821c3b807504, type: 2}
+  prtd: {fileID: 11400000, guid: 29769b2f620efe542b037e7bd59b6c17, type: 2}
+  uniqueItems: []

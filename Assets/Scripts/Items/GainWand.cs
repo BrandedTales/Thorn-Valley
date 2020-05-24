@@ -31,6 +31,7 @@ namespace BT.Items
 
         public override void CollectLoot()
         {
+            GetComponent<Lootable>().isUniqueAndCollected.SetValue(true);
             inventory.AddWand(wand);
             somethingCollected.Raise();
 

@@ -497,62 +497,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &894452889 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8320276741643111974, guid: ddf45a12e29b25f4493ecdd7baf0c4da,
-    type: 3}
-  m_PrefabInstance: {fileID: 8320276741676440056}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &894452890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894452889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f725a627e140cd249b1ac3349ff276ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: fa1d6d840f803504cad9866ce34fa7ef, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 894452896}
-        m_MethodName: UpdateJump
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 894452896}
-        m_MethodName: UpdateLight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &894452896 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8320276741643111964, guid: ddf45a12e29b25f4493ecdd7baf0c4da,
-    type: 3}
-  m_PrefabInstance: {fileID: 8320276741676440056}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894452889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 840741fe6fe8b9f4ba2ee42d608785fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1112060100
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +602,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5027946413399982710, guid: 6c3c9c4a55fac7d42973299238e55b61,
+        type: 3}
+      propertyPath: bDebug
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5027946413399982711, guid: 6c3c9c4a55fac7d42973299238e55b61,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -712,6 +661,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027946413399982716, guid: 6c3c9c4a55fac7d42973299238e55b61,
+        type: 3}
+      propertyPath: bDebug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027946413399982719, guid: 6c3c9c4a55fac7d42973299238e55b61,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c3c9c4a55fac7d42973299238e55b61, type: 3}
@@ -793,8 +752,57 @@ PrefabInstance:
       propertyPath: objectName
       value: Air Wand
       objectReference: {fileID: 0}
+    - target: {fileID: 8650103435552227700, guid: 706ecc29ab79fe043adee02ef41fbdb0,
+        type: 3}
+      propertyPath: isUnique
+      value: 
+      objectReference: {fileID: 11400000, guid: 8550ea12a1bec11469540e2540563f8d,
+        type: 2}
+    - target: {fileID: 8650103435552227700, guid: 706ecc29ab79fe043adee02ef41fbdb0,
+        type: 3}
+      propertyPath: isUniqueAndCollected
+      value: 
+      objectReference: {fileID: 11400000, guid: 8550ea12a1bec11469540e2540563f8d,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 706ecc29ab79fe043adee02ef41fbdb0, type: 3}
+--- !u!1 &1309402557 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4840642711494744653, guid: 706ecc29ab79fe043adee02ef41fbdb0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1309402556}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1309402558
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309402557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebd02693c4334590b04671f82f1ddad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isExpanded: 1
+  quest: {fileID: 8307481836079110598, guid: cbf91402b2089a34c8fe1e20b92b5c81, type: 2}
+  status: 2
+--- !u!114 &1309402559
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309402557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d5a50368374438dbff3af09a8fefb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 1309402558}
+  executingIndex: -1
+  isExecuting: 0
 --- !u!1001 &1337679771
 PrefabInstance:
   m_ObjectHideFlags: 0
